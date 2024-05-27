@@ -4,10 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.aix</groupId>
-        <artifactId>aix-boot</artifactId>
+        <artifactId>aix-admin</artifactId>
         <version>${revision}</version>
     </parent>
-    <groupId>com.aix.domain</groupId>
     <artifactId>aix-domain</artifactId>
     <version>${revision}</version>
     <name>aix-domain</name>
@@ -20,7 +19,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.aix.application</groupId>
+            <groupId>com.aix</groupId>
             <artifactId>aix-application</artifactId>
         </dependency>
     </dependencies>

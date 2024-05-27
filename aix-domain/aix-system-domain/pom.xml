@@ -7,11 +7,12 @@
         <artifactId>aix-domain</artifactId>
         <version>${revision}</version>
     </parent>
-    <groupId>com.aix.domain</groupId>
+    <groupId>com.aix.system</groupId>
     <artifactId>aix-system-domain</artifactId>
     <version>${revision}</version>
     <name>aix-system-domain</name>
     <description>aix-system-domain</description>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>

@@ -12,6 +12,7 @@
     <version>${revision}</version>
     <name>aix-system-api</name>
     <description>aix-system-api</description>
+    <packaging>jar</packaging>
 
     <dependencies>
 

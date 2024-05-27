@@ -12,6 +12,7 @@
     <version>${revision}</version>
     <name>aix-system-repository</name>
     <description>aix-system-repository</description>
+    <packaging>jar</packaging>
 
     <dependencies>
 

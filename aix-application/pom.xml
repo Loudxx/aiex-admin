@@ -4,10 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.aix</groupId>
-        <artifactId>aix-boot</artifactId>
+        <artifactId>aix-admin</artifactId>
         <version>${revision}</version>
     </parent>
-    <groupId>com.aix.application</groupId>
     <artifactId>aix-application</artifactId>
     <version>${revision}</version>
     <name>aix-application</name>

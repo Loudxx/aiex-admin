@@ -12,6 +12,7 @@
     <version>${revision}</version>
     <name>aix-system</name>
     <description>aix-system</description>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -23,18 +24,5 @@
             <artifactId>aix-system-domain</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.graalvm.buildtools</groupId>
-                <artifactId>native-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

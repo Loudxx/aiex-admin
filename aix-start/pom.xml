@@ -7,18 +7,21 @@
         <artifactId>aix-admin</artifactId>
         <version>${revision}</version>
     </parent>
-    <artifactId>aix-web</artifactId>
+    <artifactId>aix-start</artifactId>
     <version>${revision}</version>
-    <name>aix-web</name>
-    <description>aix-web</description>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>aix-system</module>
-    </modules>
+    <name>aix-start</name>
+    <description>aix-start</description>
+    <packaging>jar</packaging>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.aix.system</groupId>
+            <artifactId>aix-system</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aix</groupId>
+            <artifactId>aix-boot</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
