@@ -15,9 +15,9 @@ aix-framework
 ├── aix-cloud -- cloud相关
 ├── aix-common -- 工具相关
 ├── aix-modules -- 组件模块
-    ├── aix-db -- 持久层模块
-    ├── aix-web -- web模块
-    ├── aix-security -- 安全模块
+├── aix-db -- 持久层模块
+├── aix-web -- web模块
+├── aix-security -- 安全模块
 
 
 
