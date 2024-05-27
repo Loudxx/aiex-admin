@@ -12,7 +12,7 @@ aix智能后台管理系统
 
 
 工程结构
-aix-admin
+aix-admin  
 ├── aix-application -- 应用服务层，主要作为各个领域的聚合和事件相关  
 ├── aix-domain -- 领域服务层，业务的组装  
 ├── aix-infra -- 基础设施层，持久化层mapper和资源层同域或跨域调用实现    
