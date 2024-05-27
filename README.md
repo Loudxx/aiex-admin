@@ -4,7 +4,7 @@
 aix智能后台管理系统
 
 采用前后端分离的模式，前端开源两个框架：aix-react(基于 React、Ant Design)、aix-vue (基于 Vue、Element-UI)。 
-后端分为框架实现aix-framework, boot版本aix-admin, cloud版本aix-admin-cloud  
+后端分为框架实现aix-framework, boot版本aix-admin, cloud版本aix-cloud  
 借鉴ddd领域驱动，增加领域层，适用于复杂项目开发  
 
 整体架构
