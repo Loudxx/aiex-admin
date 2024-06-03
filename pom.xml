@@ -21,6 +21,7 @@
 
     <modules>
         <module>aix-application</module>
+        <module>aix-common</module>
         <module>aix-domain</module>
         <module>aix-infra</module>
         <module>aix-interfaces</module>

@@ -4,19 +4,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.aix</groupId>
-        <artifactId>aix-admin</artifactId>
+        <artifactId>aix-infra</artifactId>
         <version>${revision}</version>
     </parent>
-    <artifactId>aix-infra</artifactId>
+    <groupId>com.aix.system</groupId>
+    <artifactId>aix-system-acl</artifactId>
     <version>${revision}</version>
-    <name>aix-infra</name>
-    <description>aix-infra</description>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>aix-system-repository</module>
-        <module>aix-system-acl</module>
-    </modules>
+    <name>aix-system-acl</name>
+    <description>aix-system-acl</description>
+    <packaging>jar</packaging>
 
     <dependencies>
 
