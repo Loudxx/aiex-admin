@@ -3,23 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.aix.admin.system</groupId>
-  <artifactId>aix-system</artifactId>
+  <artifactId>aix-system-acl</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <name>aix-system</name>
-  <description>aix-system</description>
+  <name>aix-system-acl</name>
+  <description>aix-system-acl</description>
   <dependencies>
-    <dependency>
-      <groupId>com.aix.admin.system</groupId>
-      <artifactId>aix-system-api</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.aix.admin.system</groupId>
-      <artifactId>aix-system-domain</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-      <scope>compile</scope>
-    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>

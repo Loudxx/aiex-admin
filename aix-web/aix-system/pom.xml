@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.aix</groupId>
+        <groupId>com.aix.admin</groupId>
         <artifactId>aix-web</artifactId>
         <version>${revision}</version>
     </parent>
-    <groupId>com.aix.system</groupId>
+    <groupId>com.aix.admin.system</groupId>
     <artifactId>aix-system</artifactId>
     <version>${revision}</version>
     <name>aix-system</name>
@@ -16,11 +16,11 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.aix.system</groupId>
+            <groupId>com.aix.admin.system</groupId>
             <artifactId>aix-system-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.aix.system</groupId>
+            <groupId>com.aix.admin.system</groupId>
             <artifactId>aix-system-domain</artifactId>
         </dependency>
     </dependencies>

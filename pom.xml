@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.aix</groupId>
+    <groupId>com.aix.admin</groupId>
     <artifactId>aix-admin</artifactId>
     <version>${revision}</version>
     <name>aix-admin</name>
@@ -14,6 +14,7 @@
 
         <revision>1.0.0-SNAPSHOT</revision>
         <aix.vision>1.0.0-SNAPSHOT</aix.vision>
+        <lombok.vision>1.18.30</lombok.vision>
 
         <maven.plugin.version>3.11.0</maven.plugin.version>
         <maven.flatten.version>1.3.0</maven.flatten.version>
@@ -39,34 +40,48 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>com.aix</groupId>
+                <groupId>com.aix.admin</groupId>
                 <artifactId>aix-application</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
-                <groupId>com.aix.system</groupId>
+                <groupId>com.aix.admin.system</groupId>
                 <artifactId>aix-system-domain</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
-                <groupId>com.aix.system</groupId>
+                <groupId>com.aix.admin.system</groupId>
                 <artifactId>aix-system-repository</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
-                <groupId>com.aix.system</groupId>
+                <groupId>com.aix.admin.system</groupId>
                 <artifactId>aix-system-api</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
-                <groupId>com.aix.system</groupId>
+                <groupId>com.aix.admin.system</groupId>
                 <artifactId>aix-system</artifactId>
                 <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.vision}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
-
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.aix</groupId>
+            <artifactId>aix-boot</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
