@@ -1,7 +1,7 @@
 # aix-admin
 
 #### 介绍
-aix智能后台管理系统
+aix开发平台
 
 采用前后端分离的模式，前端开源两个框架：aix-react(基于 React、Ant Design)、aix-vue (基于 Vue、Element-UI)。 
 后端分为框架实现aix-framework, boot版本aix-admin, cloud版本aix-cloud  
@@ -19,7 +19,7 @@ aix-admin
 ├── aix-interfaces- -- 接口层, 提供不同应用间接口调用  
 ├── aix-web -- 应用层，可以是web, app等用户请求处理，不包含业务规则，具体业务在领域层实现  
 
-
+开发中。。。
 
 
 
