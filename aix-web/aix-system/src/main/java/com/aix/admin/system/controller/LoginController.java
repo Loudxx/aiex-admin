@@ -1,0 +1,77 @@
+package com.aix.admin.system.controller;
+
+import cn.hutool.core.util.ObjectUtil;
+import com.aix.admin.system.dto.LoginDTO;
+import com.aix.common.base.Result;
+import com.wf.captcha.SpecCaptcha;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
+@RestController
+public class LoginController {
+
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
+
+    /**
+     * 测试
+     * @return String
+     */
+    @GetMapping("/test")
+    public String test(){
+        return "123";
+    }
+
+    /**
+     * 验证码
+     * @return Map<String, Object>
+     */
+    @GetMapping("/captcha")
+    public Result<Map<String, Object>> captcha(){
+        SpecCaptcha specCaptcha = new SpecCaptcha(130, 48, 5);
+        String verCode = specCaptcha.text().toLowerCase();
+        String key = UUID.randomUUID().toString();
+        // 存入redis并设置过期时间为30分钟
+        redisTemplate.opsForValue().set(key, verCode, 30, TimeUnit.MINUTES);
+        // 将key和base64返回给前端
+        Map<String, Object> map = new HashMap<>(2);
+        map.put("key", key);
+        map.put("image", specCaptcha.toBase64());
+        return Result.ok(map);
+    }
+
+    /**
+     * 登录
+     * @param loginDTO 登录信息
+     * @return Map<String, Object>
+     */
+    @PostMapping("/login")
+    public Result<Map<String, Object>> login(@RequestBody LoginDTO loginDTO){
+        String localCaptcha = redisTemplate.opsForValue().get(loginDTO.getKey());
+        //校验验证码
+        if(ObjectUtil.equal(localCaptcha, loginDTO.getCaptcha())){
+
+        }else{
+
+        }
+        // 将key和base64返回给前端
+        Map<String, Object> map = new HashMap<>(2);
+        return Result.ok(map);
+    }
+
+
+
+
+
+}
