@@ -2,10 +2,11 @@ package com.aix.admin.system.controller;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.aix.admin.system.dto.LoginDTO;
-import com.aix.common.base.Result;
+import com.aix.admin.system.service.LoginService;
+import com.aix.core.base.Result;
+import com.aix.core.enums.ErrorCodeEnum;
+import com.aix.web.exception.BizException;
 import com.wf.captcha.SpecCaptcha;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,9 @@ public class LoginController {
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
+
+    @Autowired
+    private LoginService loginService;
 
     /**
      * 测试
@@ -59,15 +63,11 @@ public class LoginController {
     @PostMapping("/login")
     public Result<Map<String, Object>> login(@RequestBody LoginDTO loginDTO){
         String localCaptcha = redisTemplate.opsForValue().get(loginDTO.getKey());
-        //校验验证码
-        if(ObjectUtil.equal(localCaptcha, loginDTO.getCaptcha())){
-
-        }else{
-
-        }
+        // 校验验证码
+        BizException.isTrue(ObjectUtil.equal(localCaptcha, loginDTO.getCaptcha()), ErrorCodeEnum.FAIL);
+        loginService.login(loginDTO);
         // 将key和base64返回给前端
-        Map<String, Object> map = new HashMap<>(2);
-        return Result.ok(map);
+        return Result.ok();
     }
 
 

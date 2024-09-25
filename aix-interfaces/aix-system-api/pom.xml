@@ -15,7 +15,10 @@
     <packaging>jar</packaging>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.aix.admin</groupId>
+            <artifactId>aix-common</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
