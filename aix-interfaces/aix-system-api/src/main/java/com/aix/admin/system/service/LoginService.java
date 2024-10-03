@@ -8,5 +8,5 @@ public interface LoginService {
      * 登录
      * @param loginDTO
      */
-    void login(LoginDTO loginDTO);
+    String login(LoginDTO loginDTO);
 }

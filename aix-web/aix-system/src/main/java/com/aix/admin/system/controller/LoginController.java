@@ -65,9 +65,11 @@ public class LoginController {
         String localCaptcha = redisTemplate.opsForValue().get(loginDTO.getKey());
         // 校验验证码
         BizException.isTrue(ObjectUtil.equal(localCaptcha, loginDTO.getCaptcha()), ErrorCodeEnum.FAIL);
-        loginService.login(loginDTO);
-        // 将key和base64返回给前端
-        return Result.ok();
+        // 登录生成token
+        String token = loginService.login(loginDTO);
+        Map<String, Object> map = new HashMap<>(1);
+        map.put("token", token);
+        return Result.ok(map);
     }
 
 
