@@ -33,6 +33,9 @@ aix:
       - /test
       - /login
 
+    token:
+      header: Bear
+
 
 
 

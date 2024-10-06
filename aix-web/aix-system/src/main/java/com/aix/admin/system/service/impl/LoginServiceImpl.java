@@ -5,7 +5,6 @@ import com.aix.admin.system.dto.LoginDTO;
 import com.aix.admin.system.service.LoginService;
 import com.aix.framework.security.bo.LoginUser;
 import com.aix.framework.security.service.TokenService;
-import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,7 +18,7 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private LoginDomainService loginDomainService;
 
-    @Resource
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired

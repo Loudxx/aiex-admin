@@ -1,13 +1,13 @@
 package com.aix.admin;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.aix.framework.boot.autoconfigure.AixBootApplication;
+import com.aix.framework.boot.core.AixApplication;
 
-@SpringBootApplication
+@AixBootApplication
 public class AixStartApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AixStartApplication.class, args);
+        AixApplication.run(AixStartApplication.class, args);
     }
 
 }
