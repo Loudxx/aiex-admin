@@ -28,13 +28,21 @@ aix:
   security:
     #开启aix的security
     enabled: true
+    #白名单
     white-list:
       - /captcha
       - /test
       - /login
-
+    #token配置
     token:
-      header: Bear
+      # 令牌自定义标识
+      header: Authorization
+      # 令牌密钥
+      secret: abcdefghijklmnopqrstuvwxyz
+      # 令牌有效期（默认30分钟）
+      expire-time: 30
+      # token前缀
+      token-prefix: Bearer
 
 
 
