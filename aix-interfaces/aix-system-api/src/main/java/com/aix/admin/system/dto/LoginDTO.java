@@ -7,19 +7,19 @@ public class LoginDTO {
     /**
      * 用户名
      */
-    private String userName;
+    private String username;
     /**
      * 密码
      */
-    private String passWord;
+    private String password;
     /**
      * 验证码
      */
-    private String captcha;
+    private String code;
     /**
      * 获取验证码的时间戳
      */
-    private String key;
+    private String uuid;
 
 
 

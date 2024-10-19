@@ -2,6 +2,7 @@ package com.aix.admin.system.controller;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.aix.admin.system.dto.LoginDTO;
+import com.aix.admin.system.entity.User;
 import com.aix.admin.system.service.LoginService;
 import com.aix.framework.core.base.Result;
 import com.aix.framework.core.enums.ErrorCodeEnum;
@@ -9,6 +10,7 @@ import com.aix.framework.web.exception.BizException;
 import com.wf.captcha.SpecCaptcha;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,12 +47,12 @@ public class LoginController {
     public Result<Map<String, Object>> captcha(){
         SpecCaptcha specCaptcha = new SpecCaptcha(130, 48, 5);
         String verCode = specCaptcha.text().toLowerCase();
-        String key = UUID.randomUUID().toString();
+        String uuid = UUID.randomUUID().toString();
         // 存入redis并设置过期时间为30分钟
-        redisTemplate.opsForValue().set(key, verCode, 30, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set(uuid, verCode, 30, TimeUnit.MINUTES);
         // 将key和base64返回给前端
         Map<String, Object> map = new HashMap<>(2);
-        map.put("key", key);
+        map.put("uuid", uuid);
         map.put("image", specCaptcha.toBase64());
         return Result.ok(map);
     }
@@ -62,9 +64,9 @@ public class LoginController {
      */
     @PostMapping("/login")
     public Result<Map<String, Object>> login(@RequestBody LoginDTO loginDTO){
-        String localCaptcha = redisTemplate.opsForValue().get(loginDTO.getKey());
+        String localCaptcha = redisTemplate.opsForValue().get(loginDTO.getUuid());
         // 校验验证码
-        BizException.isTrue(ObjectUtil.equal(localCaptcha, loginDTO.getCaptcha()), ErrorCodeEnum.FAIL);
+        BizException.isTrue(ObjectUtil.equal(localCaptcha, loginDTO.getCode()), ErrorCodeEnum.FAIL);
         // 登录生成token
         String token = loginService.login(loginDTO);
         Map<String, Object> map = new HashMap<>(1);
@@ -72,7 +74,15 @@ public class LoginController {
         return Result.ok(map);
     }
 
-
+    /**
+     * 获取当前登录用户信息
+     * @return User
+     */
+    @PostMapping("/login")
+    public Result<User> login(){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return Result.ok(user);
+    }
 
 
 

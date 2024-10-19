@@ -6,22 +6,11 @@ import com.mybatisflex.annotation.KeyType;
 import com.mybatisflex.annotation.Table;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-@Table("sys_user")
-public class User extends LoginUser {
+@Table("sys_role")
+public class Role{
 
     @Id(keyType = KeyType.Auto)
     private Long id;
-
-    /**
-     * 角色列表
-     */
-    private List<Role> roles;
-    /**
-     * 权限列表
-     */
-    private List<Menu> menus;
 
 }
