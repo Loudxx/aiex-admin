@@ -33,13 +33,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         queryWrapper.likeLeft("username", username);
         User user = userMapper.selectOneByQuery(queryWrapper);
 
-        QueryWrapper roleQueryWrapper = new QueryWrapper();
-        roleQueryWrapper.likeLeft("user_id", user.getId());
-        List<Role> roles = roleMapper.selectListByQuery(roleQueryWrapper);
+        List<Role> roles = roleMapper.selectListByUserId(user.getId());
 
-        QueryWrapper menuQueryWrapper = new QueryWrapper();
-        menuQueryWrapper.likeLeft("username", user.getId());
-        List<Menu> menus = menuMapper.selectListByQuery(menuQueryWrapper);
+        List<Menu> menus = menuMapper.selectListByUserId(user.getId());
 
         user.setRoles(roles);
         user.setMenus(menus);

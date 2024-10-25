@@ -78,8 +78,8 @@ public class LoginController {
      * 获取当前登录用户信息
      * @return User
      */
-    @PostMapping("/login")
-    public Result<User> login(){
+    @PostMapping("/getUserInfo")
+    public Result<User> getUserInfo(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return Result.ok(user);
     }
