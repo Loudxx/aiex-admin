@@ -30,13 +30,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.likeLeft("username", username);
+        queryWrapper.eq("username", username);
         User user = userMapper.selectOneByQuery(queryWrapper);
-
+        //查询用户对应角色
         List<Role> roles = roleMapper.selectListByUserId(user.getId());
-
+        //查询用户对应菜单
         List<Menu> menus = menuMapper.selectListByUserId(user.getId());
-
         user.setRoles(roles);
         user.setMenus(menus);
         return user;
