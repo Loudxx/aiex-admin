@@ -30,9 +30,7 @@ aix:
     enabled: true
     #白名单
     white-list:
-      - /captcha
       - /test
-      - /login
     #token配置
     token:
       # 令牌自定义标识
@@ -42,7 +40,9 @@ aix:
       # 令牌有效期（默认30分钟）
       expire-time: 30
       # token前缀
-      token-prefix: Bearer
+      token-prefix: "Bearer "
+      # redis登录用户key
+      login-user-key: "aix:login_tokens:"
 
 
 

@@ -32,6 +32,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("username", username);
         User user = userMapper.selectOneByQuery(queryWrapper);
+        if (user == null) {
+            throw new UsernameNotFoundException("用户不存在");
+        }
         //查询用户对应角色
         List<Role> roles = roleMapper.selectListByUserId(user.getId());
         //查询用户对应菜单

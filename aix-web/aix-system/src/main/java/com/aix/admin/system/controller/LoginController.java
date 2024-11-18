@@ -78,7 +78,7 @@ public class LoginController {
      * 获取当前登录用户信息
      * @return User
      */
-    @PostMapping("/getUserInfo")
+    @GetMapping("/getUserInfo")
     public Result<User> getUserInfo(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return Result.ok(user);
