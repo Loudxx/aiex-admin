@@ -7,9 +7,9 @@ import com.aix.admin.system.service.LoginService;
 import com.aix.framework.core.base.Result;
 import com.aix.framework.core.enums.ErrorCodeEnum;
 import com.aix.framework.web.exception.BizException;
+import com.aix.framework.web.redis.RedisCache;
 import com.wf.captcha.SpecCaptcha;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginController {
 
     @Autowired
-    private RedisTemplate<String, String> redisTemplate;
+    private RedisCache redisCache;
 
     @Autowired
     private LoginService loginService;
@@ -49,7 +49,7 @@ public class LoginController {
         String verCode = specCaptcha.text().toLowerCase();
         String uuid = UUID.randomUUID().toString();
         // 存入redis并设置过期时间为30分钟
-        redisTemplate.opsForValue().set(uuid, verCode, 30, TimeUnit.MINUTES);
+        redisCache.setCacheObject(uuid, verCode, 30, TimeUnit.MINUTES);
         // 将key和base64返回给前端
         Map<String, Object> map = new HashMap<>(2);
         map.put("uuid", uuid);
@@ -64,7 +64,7 @@ public class LoginController {
      */
     @PostMapping("/login")
     public Result<Map<String, Object>> login(@RequestBody LoginDTO loginDTO){
-        String localCaptcha = redisTemplate.opsForValue().get(loginDTO.getUuid());
+        String localCaptcha = redisCache.getCacheObject(loginDTO.getUuid());
         // 校验验证码
         BizException.isTrue(ObjectUtil.equal(localCaptcha, loginDTO.getCode()), ErrorCodeEnum.FAIL);
         // 登录生成token

@@ -25,6 +25,7 @@ spring:
 
 #aix自定义配置
 aix:
+
   security:
     #开启aix的security
     enabled: true
