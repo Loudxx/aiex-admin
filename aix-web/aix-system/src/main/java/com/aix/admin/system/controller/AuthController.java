@@ -10,11 +10,8 @@ import com.aix.framework.web.exception.BizException;
 import com.aix.framework.web.redis.RedisCache;
 import com.wf.captcha.SpecCaptcha;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +19,11 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-public class LoginController {
+@RequestMapping("auth")
+public class AuthController {
+
+    @Value("${aix.security.captcha.enabled}")
+    private Boolean captchaEnable;
 
     @Autowired
     private RedisCache redisCache;
@@ -64,24 +65,43 @@ public class LoginController {
      */
     @PostMapping("/login")
     public Result<Map<String, Object>> login(@RequestBody LoginDTO loginDTO){
-        String localCaptcha = redisCache.getCacheObject(loginDTO.getUuid());
-        // 校验验证码
-        BizException.isTrue(ObjectUtil.equal(localCaptcha, loginDTO.getCode()), ErrorCodeEnum.FAIL);
+        if(captchaEnable){
+            String localCaptcha = redisCache.getCacheObject(loginDTO.getUuid());
+            // 校验验证码
+            BizException.isTrue(ObjectUtil.equal(localCaptcha, loginDTO.getCode()), ErrorCodeEnum.FAIL);
+        }
         // 登录生成token
         String token = loginService.login(loginDTO);
         Map<String, Object> map = new HashMap<>(1);
-        map.put("token", token);
+        map.put("accessToken", token);
         return Result.ok(map);
     }
 
     /**
-     * 获取当前登录用户信息
-     * @return User
+     * 获取权限码
+     * @return Void
      */
-    @GetMapping("/getUserInfo")
-    public Result<User> getUserInfo(){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return Result.ok(user);
+    @GetMapping("/codes")
+    public Result<Void> codes(){
+        return Result.ok();
+    }
+
+    /**
+     * 刷新token
+     * @return Void
+     */
+    @PostMapping("/refresh")
+    public Result<Void> refresh(){
+        return Result.ok();
+    }
+
+    /**
+     * 退出登录
+     * @return Void
+     */
+    @PostMapping("/logout")
+    public Result<Void> logout(){
+        return Result.ok();
     }
 
 

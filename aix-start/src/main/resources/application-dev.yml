@@ -2,9 +2,9 @@
 spring:
   #通用开发生产环境数据库地址(特殊情况可在对应的子工程里配置覆盖)
   datasource:
-    url: jdbc:mysql://localhost:3306/aix-admin?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&tinyInt1isBit=false&allowMultiQueries=true&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://47.118.56.159:3306/aix-admin?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&tinyInt1isBit=false&allowMultiQueries=true&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
     username: root
-    password: loud@1996
+    password: Loud@..1996
 
 
 
