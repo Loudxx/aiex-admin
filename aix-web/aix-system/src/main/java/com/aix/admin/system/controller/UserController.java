@@ -1,6 +1,6 @@
 package com.aix.admin.system.controller;
 
-import com.aix.admin.system.entity.User;
+import com.aix.admin.system.entity.UserDO;
 import com.aix.framework.core.base.Result;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +16,8 @@ public class UserController {
      * @return User
      */
     @GetMapping("/info")
-    public Result<User> getUserInfo(){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public Result<UserDO> getUserInfo(){
+        UserDO user = (UserDO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return Result.ok(user);
     }
 

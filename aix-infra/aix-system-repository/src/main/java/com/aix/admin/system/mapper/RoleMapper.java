@@ -1,18 +1,15 @@
 package com.aix.admin.system.mapper;
 
-import com.aix.admin.system.entity.Role;
-import com.aix.admin.system.entity.table.UserTableDef;
+import com.aix.admin.system.entity.RoleDO;
 import com.mybatisflex.core.BaseMapper;
 import com.mybatisflex.core.query.QueryWrapper;
 
 import java.util.List;
 
-import static com.aix.admin.system.entity.table.UserTableDef.USER;
-
-public interface RoleMapper extends BaseMapper<Role> {
+public interface RoleMapper extends BaseMapper<RoleDO> {
 
 
-    default List<Role> selectListByUserId(Long userId){
+    default List<RoleDO> selectListByUserId(Long userId){
         return this.selectListByQuery(QueryWrapper.create()
                 .select()
                 .from("sys_user_role").as("ur")

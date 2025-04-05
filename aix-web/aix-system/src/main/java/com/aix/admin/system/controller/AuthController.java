@@ -2,7 +2,6 @@ package com.aix.admin.system.controller;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.aix.admin.system.dto.LoginDTO;
-import com.aix.admin.system.entity.User;
 import com.aix.admin.system.service.LoginService;
 import com.aix.framework.core.base.Result;
 import com.aix.framework.core.enums.ErrorCodeEnum;

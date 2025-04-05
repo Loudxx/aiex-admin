@@ -1,8 +1,8 @@
 package com.aix.admin.system.domian.service.impl;
 
-import com.aix.admin.system.entity.Menu;
-import com.aix.admin.system.entity.Role;
-import com.aix.admin.system.entity.User;
+import com.aix.admin.system.entity.MenuDO;
+import com.aix.admin.system.entity.RoleDO;
+import com.aix.admin.system.entity.UserDO;
 import com.aix.admin.system.mapper.MenuMapper;
 import com.aix.admin.system.mapper.RoleMapper;
 import com.aix.admin.system.mapper.UserMapper;
@@ -31,14 +31,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("username", username);
-        User user = userMapper.selectOneByQuery(queryWrapper);
+        UserDO user = userMapper.selectOneByQuery(queryWrapper);
         if (user == null) {
             throw new UsernameNotFoundException("用户不存在");
         }
         //查询用户对应角色
-        List<Role> roles = roleMapper.selectListByUserId(user.getId());
+        List<RoleDO> roles = roleMapper.selectListByUserId(user.getId());
         //查询用户对应菜单
-        List<Menu> menus = menuMapper.selectListByUserId(user.getId());
+        List<MenuDO> menus = menuMapper.selectListByUserId(user.getId());
         user.setRoles(roles);
         user.setMenus(menus);
         return user;

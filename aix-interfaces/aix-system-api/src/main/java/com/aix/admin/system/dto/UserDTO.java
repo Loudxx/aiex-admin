@@ -1,4 +1,4 @@
-package com.aix.admin.system.entity;
+package com.aix.admin.system.dto;
 
 import com.aix.framework.security.bo.LoginUser;
 import com.mybatisflex.annotation.Id;
@@ -12,7 +12,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Table("sys_user")
-public class User extends LoginUser {
+public class UserDTO extends LoginUser {
 
     @Id(keyType = KeyType.Auto)
     private Long id;
@@ -50,11 +50,11 @@ public class User extends LoginUser {
     /**
      * 角色列表
      */
-    private List<Role> roles;
+    private List<RoleDTO> roles;
 
     /**
      * 权限列表
      */
-    private List<Menu> menus;
+    private List<MenuDTO> menus;
 
 }
