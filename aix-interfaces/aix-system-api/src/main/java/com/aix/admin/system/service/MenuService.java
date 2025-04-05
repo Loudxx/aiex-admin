@@ -13,8 +13,8 @@ public interface MenuService {
     List<MenuDTO> listTreeByUserId(Long userId);
 
     /**
-     * 查询全部
+     * 查询全部树级菜单
      * @return
      */
-    List<MenuDTO> selectAll();
+    List<MenuDTO> selectAllTree();
 }

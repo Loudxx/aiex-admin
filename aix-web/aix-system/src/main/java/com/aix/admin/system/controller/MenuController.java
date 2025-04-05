@@ -29,7 +29,7 @@ public class MenuController {
         UserDO user = (UserDO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<MenuDTO> menuDTOList;
         if(user.isAdmin()){
-            menuDTOList = menuService.selectAll();
+            menuDTOList = menuService.selectAllTree();
         }else{
             menuDTOList = menuService.listTreeByUserId(user.getId());
         }

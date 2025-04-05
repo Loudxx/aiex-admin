@@ -28,8 +28,9 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public List<MenuDTO> selectAll() {
+    public List<MenuDTO> selectAllTree() {
         List<MenuDomain> menuDomainList = menuDomainService.selectAll();
-        return BeanUtil.copyToList(menuDomainList, MenuDTO.class);
+        List<MenuDTO> menuDTOList = BeanUtil.copyToList(menuDomainList, MenuDTO.class);
+        return TreeUtils.toTree(menuDTOList, rooId);
     }
 }
