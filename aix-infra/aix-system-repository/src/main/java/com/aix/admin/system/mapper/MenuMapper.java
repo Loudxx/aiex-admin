@@ -1,6 +1,7 @@
 package com.aix.admin.system.mapper;
 
 import com.aix.admin.system.entity.MenuDO;
+import com.aix.admin.system.entity.table.MenuDOTableDef;
 import com.mybatisflex.core.BaseMapper;
 import com.mybatisflex.core.query.QueryWrapper;
 
@@ -15,7 +16,7 @@ public interface MenuMapper extends BaseMapper<MenuDO> {
      */
     default List<MenuDO> selectListByUserId(Long userId){
         return this.selectListByQuery(QueryWrapper.create()
-                .select()
+                .select(MenuDOTableDef.MENU_DO.DEFAULT_COLUMNS)
                 .from("sys_user_role").as("ur")
                 .leftJoin("sys_role").as("r").on("ur.role_id = r.id")
                 .leftJoin("sys_role_menu").as("rm").on("r.id = rm.role_id")

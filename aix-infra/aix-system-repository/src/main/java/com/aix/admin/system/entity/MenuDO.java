@@ -1,26 +1,55 @@
 package com.aix.admin.system.entity;
 
-import com.aix.framework.core.base.BaseDO;
-import com.mybatisflex.annotation.Id;
-import com.mybatisflex.annotation.KeyType;
+import com.aix.framework.db.config.base.BaseDO;
 import com.mybatisflex.annotation.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Table("sys_menu")
 public class MenuDO extends BaseDO {
 
-    @Id(keyType = KeyType.Auto)
-    private Long id;
     /**
      * 菜单名称
      */
     private String name;
     /**
+     * 菜单编码
+     */
+    private String code;
+    /**
      * 菜单路径
      */
     private String path;
-
+    /**
+     * 菜单类型
+     */
+    private String type;
+    /**
+     * 排序
+     */
+    private Integer sort;
+    /**
+     * 父级id
+     */
+    private Long parentId;
+    /**
+     * 图标
+     */
+    private String icon;
+    /**
+     * 状态
+     */
+    private Integer status;
+    /**
+     * 组件
+     */
+    private String component;
+    /**
+     * 重定向地址
+     */
+    private String redirect;
 
 
 }

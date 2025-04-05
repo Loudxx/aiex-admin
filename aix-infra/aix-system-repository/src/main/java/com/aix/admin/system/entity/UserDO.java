@@ -57,4 +57,11 @@ public class UserDO extends LoginUser {
      */
     private List<MenuDO> menus;
 
+    /**
+     * 是否是超级管理员角色
+     * @return boolean
+     */
+    public boolean isAdmin() {
+        return roles.stream().anyMatch(e->e.getCode().equals("admin"));
+    }
 }

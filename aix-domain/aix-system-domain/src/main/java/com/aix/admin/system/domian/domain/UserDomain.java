@@ -1,9 +1,6 @@
 package com.aix.admin.system.domian.domain;
 
 import com.aix.framework.security.bo.LoginUser;
-import com.mybatisflex.annotation.Id;
-import com.mybatisflex.annotation.KeyType;
-import com.mybatisflex.annotation.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,11 +8,7 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Table("sys_user")
 public class UserDomain extends LoginUser {
-
-    @Id(keyType = KeyType.Auto)
-    private Long id;
 
     /**
      * 昵称

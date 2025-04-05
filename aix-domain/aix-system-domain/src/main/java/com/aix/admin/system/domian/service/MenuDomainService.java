@@ -12,4 +12,10 @@ public interface MenuDomainService {
      * @return
      */
     List<MenuDomain> listTreeByUserId(Long userId);
+
+    /**
+     * 查询全部菜单
+     * @return
+     */
+    List<MenuDomain> selectAll();
 }

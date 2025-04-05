@@ -22,4 +22,10 @@ public class MenuDomainServiceImpl implements MenuDomainService {
         List<MenuDO> menuDOList = menuMapper.selectListByUserId(userId);
         return BeanUtil.copyToList(menuDOList, MenuDomain.class);
     }
+
+    @Override
+    public List<MenuDomain> selectAll() {
+        List<MenuDO> menuDOList = menuMapper.selectAll();
+        return BeanUtil.copyToList(menuDOList, MenuDomain.class);
+    }
 }

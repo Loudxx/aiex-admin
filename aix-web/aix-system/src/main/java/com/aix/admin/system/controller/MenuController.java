@@ -27,7 +27,12 @@ public class MenuController {
     @GetMapping("/getUserMenu")
     public Result<List<MenuDTO>> getUserMenu(){
         UserDO user = (UserDO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<MenuDTO> menuDTOList = menuService.listTreeByUserId(user.getId());
+        List<MenuDTO> menuDTOList;
+        if(user.isAdmin()){
+            menuDTOList = menuService.selectAll();
+        }else{
+            menuDTOList = menuService.listTreeByUserId(user.getId());
+        }
         return Result.ok(menuDTOList);
     }
 

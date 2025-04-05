@@ -11,4 +11,10 @@ public interface MenuService {
      * @return
      */
     List<MenuDTO> listTreeByUserId(Long userId);
+
+    /**
+     * 查询全部
+     * @return
+     */
+    List<MenuDTO> selectAll();
 }
