@@ -4,6 +4,8 @@ import com.aix.framework.core.base.BaseTreeDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Map;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class MenuDTO extends BaseTreeDTO {
@@ -48,6 +50,8 @@ public class MenuDTO extends BaseTreeDTO {
      * 重定向地址
      */
     private String redirect;
+
+    private Map meta;
 
 
 

@@ -4,6 +4,8 @@ import com.aix.framework.core.base.BaseDomain;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Map;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class MenuDomain extends BaseDomain {
@@ -48,6 +50,6 @@ public class MenuDomain extends BaseDomain {
      * 重定向地址
      */
     private String redirect;
-
+    private Map meta;
 
 }

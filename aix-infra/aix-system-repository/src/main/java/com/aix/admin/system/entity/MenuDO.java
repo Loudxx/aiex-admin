@@ -51,5 +51,7 @@ public class MenuDO extends BaseDO {
      */
     private String redirect;
 
+    private String meta;
+
 
 }
