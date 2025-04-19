@@ -11,14 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("user")
 public class UserController {
 
-    /**
-     * 获取当前登录用户信息
-     * @return User
-     */
-    @GetMapping("/info")
-    public Result<UserDO> getUserInfo(){
-        UserDO user = (UserDO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return Result.ok(user);
-    }
+
 
 }

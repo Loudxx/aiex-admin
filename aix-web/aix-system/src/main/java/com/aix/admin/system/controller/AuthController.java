@@ -2,7 +2,10 @@ package com.aix.admin.system.controller;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.aix.admin.system.dto.LoginDTO;
+import com.aix.admin.system.dto.MenuDTO;
+import com.aix.admin.system.entity.UserDO;
 import com.aix.admin.system.service.LoginService;
+import com.aix.admin.system.service.MenuService;
 import com.aix.framework.core.base.Result;
 import com.aix.framework.core.enums.ErrorCodeEnum;
 import com.aix.framework.web.exception.BizException;
@@ -10,9 +13,11 @@ import com.aix.framework.web.redis.RedisCache;
 import com.wf.captcha.SpecCaptcha;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -29,6 +34,9 @@ public class AuthController {
 
     @Autowired
     private LoginService loginService;
+
+    @Autowired
+    private MenuService menuService;
 
     /**
      * 测试
@@ -76,6 +84,33 @@ public class AuthController {
         return Result.ok(map);
     }
 
+
+    /**
+     * 获取当前登录用户信息
+     * @return User
+     */
+    @GetMapping("/getUserMenu")
+    public Result<List<MenuDTO>> getUserMenu(){
+        UserDO user = (UserDO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<MenuDTO> menuDTOList;
+        if(user.isAdmin()){
+            menuDTOList = menuService.selectAllTree();
+        }else{
+            menuDTOList = menuService.listTreeByUserId(user.getId());
+        }
+        return Result.ok(menuDTOList);
+    }
+
+    /**
+     * 获取当前登录用户信息
+     * @return User
+     */
+    @GetMapping("/getUserInfo")
+    public Result<UserDO> getUserInfo(){
+        UserDO user = (UserDO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return Result.ok(user);
+    }
+
     /**
      * 获取权限码
      * @return Void
@@ -102,6 +137,7 @@ public class AuthController {
     public Result<Void> logout(){
         return Result.ok();
     }
+
 
 
 

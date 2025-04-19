@@ -17,24 +17,7 @@ import java.util.List;
 @RequestMapping("menu")
 public class MenuController {
 
-    @Autowired
-    private MenuService menuService;
 
-    /**
-     * 获取当前登录用户信息
-     * @return User
-     */
-    @GetMapping("/getUserMenu")
-    public Result<List<MenuDTO>> getUserMenu(){
-        UserDO user = (UserDO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<MenuDTO> menuDTOList;
-        if(user.isAdmin()){
-            menuDTOList = menuService.selectAllTree();
-        }else{
-            menuDTOList = menuService.listTreeByUserId(user.getId());
-        }
-        return Result.ok(menuDTOList);
-    }
 
 
 
