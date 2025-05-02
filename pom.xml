@@ -68,6 +68,11 @@
             </dependency>
             <dependency>
                 <groupId>com.aix.admin.system</groupId>
+                <artifactId>aix-system-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aix.admin.system</groupId>
                 <artifactId>aix-system</artifactId>
                 <version>${revision}</version>
             </dependency>

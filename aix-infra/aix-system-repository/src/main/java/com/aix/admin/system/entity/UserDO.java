@@ -1,7 +1,6 @@
 package com.aix.admin.system.entity;
 
 import com.aix.framework.security.bo.LoginUser;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mybatisflex.annotation.Column;
 import com.mybatisflex.annotation.Id;
 import com.mybatisflex.annotation.KeyType;
@@ -61,12 +60,4 @@ public class UserDO extends LoginUser {
     @Column(ignore = true)
     private List<MenuDO> menus;
 
-    /**
-     * 是否是超级管理员角色
-     * @return boolean
-     */
-    @JsonIgnore
-    public boolean isAdmin() {
-        return roles.stream().anyMatch(e->e.getCode().equals("admin"));
-    }
 }

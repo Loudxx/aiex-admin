@@ -1,6 +1,7 @@
 package com.aix.admin.system.dto;
 
 import com.aix.framework.security.bo.LoginUser;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mybatisflex.annotation.Id;
 import com.mybatisflex.annotation.KeyType;
 import com.mybatisflex.annotation.Table;
@@ -9,12 +10,9 @@ import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
-@Table("sys_user")
 public class UserDTO extends LoginUser {
 
-    @Id(keyType = KeyType.Auto)
     private Long id;
 
     /**
@@ -56,5 +54,14 @@ public class UserDTO extends LoginUser {
      * 权限列表
      */
     private List<MenuDTO> menus;
+
+    /**
+     * 是否是超级管理员角色
+     * @return boolean
+     */
+    @JsonIgnore
+    public boolean isAdmin() {
+        return roles.stream().anyMatch(e->e.getCode().equals("admin"));
+    }
 
 }

@@ -1,6 +1,6 @@
 package com.aix.admin.system.domian.domain;
 
-import com.aix.framework.core.base.BaseDomain;
+import com.aix.framework.core.base.domain.BaseDomain;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

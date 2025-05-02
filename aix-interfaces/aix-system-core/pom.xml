@@ -4,20 +4,24 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.aix.admin</groupId>
-        <artifactId>aix-web</artifactId>
+        <artifactId>aix-interfaces</artifactId>
         <version>${revision}</version>
     </parent>
     <groupId>com.aix.admin.system</groupId>
-    <artifactId>aix-system</artifactId>
+    <artifactId>aix-system-core</artifactId>
     <version>${revision}</version>
-    <name>aix-system</name>
-    <description>aix-system</description>
+    <name>aix-system-core</name>
+    <description>aix-system-core</description>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.aix.admin.system</groupId>
-            <artifactId>aix-system-core</artifactId>
+            <artifactId>aix-system-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aix.admin.system</groupId>
+            <artifactId>aix-system-domain</artifactId>
         </dependency>
     </dependencies>
 

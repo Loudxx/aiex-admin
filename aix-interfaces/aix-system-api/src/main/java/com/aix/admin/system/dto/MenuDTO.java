@@ -1,6 +1,6 @@
 package com.aix.admin.system.dto;
 
-import com.aix.framework.core.base.BaseTreeDTO;
+import com.aix.framework.core.base.dto.BaseTreeDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

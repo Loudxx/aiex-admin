@@ -15,6 +15,7 @@
 
     <modules>
         <module>aix-system-api</module>
+        <module>aix-system-core</module>
     </modules>
 
     <dependencies>

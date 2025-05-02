@@ -3,6 +3,8 @@ package com.aix.admin.system.domian.service.impl;
 import com.aix.admin.system.entity.MenuDO;
 import com.aix.admin.system.entity.RoleDO;
 import com.aix.admin.system.entity.UserDO;
+import com.aix.admin.system.entity.query.MenuQueryDO;
+import com.aix.admin.system.entity.query.UserMenuQueryDO;
 import com.aix.admin.system.mapper.MenuMapper;
 import com.aix.admin.system.mapper.RoleMapper;
 import com.aix.admin.system.mapper.UserMapper;
@@ -38,7 +40,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         //查询用户对应角色
         List<RoleDO> roles = roleMapper.selectListByUserId(user.getId());
         //查询用户对应菜单
-        List<MenuDO> menus = menuMapper.selectListByUserId(user.getId());
+        UserMenuQueryDO userMenuQueryDO = new UserMenuQueryDO();
+        userMenuQueryDO.setUserId(user.getId());
+        List<MenuDO> menus = menuMapper.listUserByQuery(userMenuQueryDO);
         user.setRoles(roles);
         user.setMenus(menus);
         return user;

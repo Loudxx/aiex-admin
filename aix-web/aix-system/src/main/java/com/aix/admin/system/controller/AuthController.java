@@ -3,11 +3,13 @@ package com.aix.admin.system.controller;
 import cn.hutool.core.util.ObjectUtil;
 import com.aix.admin.system.dto.LoginDTO;
 import com.aix.admin.system.dto.MenuDTO;
-import com.aix.admin.system.entity.UserDO;
-import com.aix.admin.system.service.LoginService;
+import com.aix.admin.system.dto.UserDTO;
+import com.aix.admin.system.dto.query.MenuQueryDTO;
+import com.aix.admin.system.dto.query.UserMenuQueryDTO;
+import com.aix.admin.system.service.AuthService;
 import com.aix.admin.system.service.MenuService;
-import com.aix.framework.core.base.Result;
-import com.aix.framework.core.enums.ErrorCodeEnum;
+import com.aix.framework.web.base.Result;
+import com.aix.framework.web.enums.WebErrorCodeEnum;
 import com.aix.framework.web.exception.BizException;
 import com.aix.framework.web.redis.RedisCache;
 import com.wf.captcha.SpecCaptcha;
@@ -33,7 +35,7 @@ public class AuthController {
     private RedisCache redisCache;
 
     @Autowired
-    private LoginService loginService;
+    private AuthService authService;
 
     @Autowired
     private MenuService menuService;
@@ -75,10 +77,10 @@ public class AuthController {
         if(captchaEnable){
             String localCaptcha = redisCache.getCacheObject(loginDTO.getUuid());
             // 校验验证码
-            BizException.isTrue(ObjectUtil.equal(localCaptcha, loginDTO.getCode()), ErrorCodeEnum.FAIL);
+            BizException.isTrue(ObjectUtil.equal(localCaptcha, loginDTO.getCode()), WebErrorCodeEnum.FAIL);
         }
         // 登录生成token
-        String token = loginService.login(loginDTO);
+        String token = authService.login(loginDTO);
         Map<String, Object> map = new HashMap<>(1);
         map.put("accessToken", token);
         return Result.ok(map);
@@ -91,12 +93,15 @@ public class AuthController {
      */
     @GetMapping("/getUserMenu")
     public Result<List<MenuDTO>> getUserMenu(){
-        UserDO user = (UserDO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDTO userDTO = authService.getUserInfo();
         List<MenuDTO> menuDTOList;
-        if(user.isAdmin()){
-            menuDTOList = menuService.selectAllTree();
+        if(!userDTO.isAdmin()){
+            UserMenuQueryDTO menuQueryDTO = new UserMenuQueryDTO();
+            menuQueryDTO.setUserId(userDTO.getId());
+            menuDTOList = menuService.listUserTreeByQuery(menuQueryDTO);
         }else{
-            menuDTOList = menuService.listTreeByUserId(user.getId());
+            MenuQueryDTO menuQueryDTO = new MenuQueryDTO();
+            menuDTOList = menuService.listTreeByQuery(menuQueryDTO);
         }
         return Result.ok(menuDTOList);
     }
@@ -106,8 +111,8 @@ public class AuthController {
      * @return User
      */
     @GetMapping("/getUserInfo")
-    public Result<UserDO> getUserInfo(){
-        UserDO user = (UserDO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public Result<UserDTO> getUserInfo(){
+        UserDTO user = authService.getUserInfo();
         return Result.ok(user);
     }
 
@@ -124,7 +129,7 @@ public class AuthController {
      * 刷新token
      * @return Void
      */
-    @PostMapping("/refresh")
+    @GetMapping("/refresh")
     public Result<Void> refresh(){
         return Result.ok();
     }
@@ -133,7 +138,7 @@ public class AuthController {
      * 退出登录
      * @return Void
      */
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public Result<Void> logout(){
         return Result.ok();
     }
