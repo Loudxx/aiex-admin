@@ -11,9 +11,13 @@ import lombok.EqualsAndHashCode;
 import java.util.List;
 
 @Data
-public class UserDTO extends LoginUser {
+public class UserDTO{
 
     private Long id;
+    /**
+     * 用户名
+     */
+    private String username;
 
     /**
      * 昵称

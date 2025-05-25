@@ -6,11 +6,12 @@ import com.aix.admin.system.entity.query.UserQueryDO;
 import com.aix.framework.db.config.base.PageDTO;
 import com.aix.framework.db.config.base.mapper.FlexBaseMapper;
 import com.mybatisflex.core.query.QueryWrapper;
+import org.apache.ibatis.annotations.Mapper;
 
 import static com.aix.admin.system.entity.table.UserDOTableDef.USER_DO;
 
+@Mapper
 public interface UserMapper extends FlexBaseMapper<UserDO> {
-
 
     default PageDTO<UserDO> pageByQuery(UserQueryDO userQueryPO){
         QueryWrapper queryWrapper = QueryWrapper.create()
