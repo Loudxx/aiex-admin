@@ -28,7 +28,7 @@ public class UserDomain extends LoginUser {
     /**
      * 性别
      */
-    private String sex;
+    private Integer sex;
 
     /**
      * 头像
@@ -38,7 +38,7 @@ public class UserDomain extends LoginUser {
     /**
      * 状态
      */
-    private String status;
+    private Integer status;
 
     /**
      * 角色列表

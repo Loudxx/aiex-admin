@@ -1,10 +1,13 @@
 package com.aix.admin.system.domian.domain.query;
 
-import com.aix.framework.core.base.Page;
+import com.aix.framework.db.config.base.PageDTO;
 import lombok.Data;
 
+import java.util.Date;
+import java.util.List;
+
 @Data
-public class UserQueryDomain extends Page<UserQueryDomain> {
+public class UserQueryDomain extends PageDTO<UserQueryDomain> {
 
     /**
      * 用户名
@@ -22,6 +25,14 @@ public class UserQueryDomain extends Page<UserQueryDomain> {
      * 状态
      */
     private String status;
+    /**
+     * 创建时间开始
+     */
+    private String createTimeStart;
+    /**
+     * 创建时间结束
+     */
+    private String createTimeEnd;
 
 
 }

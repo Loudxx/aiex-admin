@@ -1,13 +1,16 @@
 package com.aix.admin.system.entity.query;
 
 
-import com.aix.framework.core.base.Page;
+import com.aix.framework.db.config.base.PageDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Date;
+import java.util.List;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class UserQueryDO extends Page<UserQueryDO> {
+public class UserQueryDO extends PageDTO<UserQueryDO> {
 
     /**
      * 用户名
@@ -25,5 +28,13 @@ public class UserQueryDO extends Page<UserQueryDO> {
      * 状态
      */
     private String status;
+    /**
+     * 创建时间开始
+     */
+    private String createTimeStart;
+    /**
+     * 创建时间结束
+     */
+    private String createTimeEnd;
 
 }

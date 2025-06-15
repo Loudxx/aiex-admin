@@ -37,7 +37,7 @@ public class UserDTO{
     /**
      * 性别
      */
-    private String sex;
+    private Integer sex;
 
     /**
      * 头像
@@ -47,7 +47,7 @@ public class UserDTO{
     /**
      * 状态
      */
-    private String status;
+    private Integer status;
 
     /**
      * 角色列表
