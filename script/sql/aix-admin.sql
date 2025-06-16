@@ -11,7 +11,7 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 02/05/2025 10:26:43
+ Date: 16/06/2025 23:19:10
 */
 
 SET NAMES utf8mb4;
@@ -50,9 +50,9 @@ INSERT INTO `sys_menu` VALUES (1, 'Dashboard', 'dashboard', '0', 1, 0, '/', NULL
 INSERT INTO `sys_menu` VALUES (2, 'Analytics', 'analytics', '0', 1, 1, '/analytics', NULL, 0, 0, '2024-11-18 14:28:46', '2024-11-18 14:28:50', 1, 1, '{ \"affixTab\": true, \"title\": \"page.dashboard.analytics\"}', 'views/dashboard/analytics/index', NULL);
 INSERT INTO `sys_menu` VALUES (3, 'Workspace', 'workspace', '0', 1, 1, '/workspace', NULL, 0, 0, '2024-11-18 14:28:46', '2024-11-18 14:28:50', 1, 1, '{\"title\": \"page.dashboard.workspace\"}', 'views/dashboard/workspace/index', '');
 INSERT INTO `sys_menu` VALUES (4, 'System', 'system', '0', 2, 0, '/system', NULL, 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, '{\"title\": \"page.system.title\"}', '', NULL);
-INSERT INTO `sys_menu` VALUES (5, 'User', 'user', '0', 2, 4, '/user', NULL, 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, '{\"title\": \"page.system.user\"}', 'views/system/user/list', NULL);
-INSERT INTO `sys_menu` VALUES (6, 'Role', 'role', '0', 2, 4, '/role', NULL, 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, '{\"title\": \"page.system.role\"}', 'views/system/role/list', NULL);
-INSERT INTO `sys_menu` VALUES (7, 'Menu', 'menu', '0', 2, 4, '/menu', NULL, 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, '{\"title\": \"page.system.menu\"}', 'views/system/menu/list', NULL);
+INSERT INTO `sys_menu` VALUES (5, 'User', 'user', '0', 2, 4, '/user', NULL, 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, '{\"title\": \"page.system.user\"}', 'views/system/user/index', NULL);
+INSERT INTO `sys_menu` VALUES (6, 'Role', 'role', '0', 2, 4, '/role', NULL, 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, '{\"title\": \"page.system.role\"}', 'views/system/role/index', NULL);
+INSERT INTO `sys_menu` VALUES (7, 'Menu', 'menu', '0', 2, 4, '/menu', NULL, 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, '{\"title\": \"page.system.menu\"}', 'views/system/menu/index', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -122,13 +122,14 @@ CREATE TABLE `sys_user` (
   `browser` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '浏览器',
   `os` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '操作系统',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$tlA11dMU54OEp3qDKicgm.aMKYVJ2h7dFvWnq8ImtpOoSZDNlYuZ2', '管理员', NULL, NULL, 0, NULL, 0, '2024-10-07 20:53:47', '2024-10-07 20:53:51', '1', '1', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$aynU145Ls4BOXbqGbV5Xo.9AZiToK4IHSN9cJ1RTeOPPSkU3zZz9e', '管理员', '111111111@qq.com', '13111111111', 0, NULL, 0, '2025-06-15 23:09:19', '2025-06-15 23:09:19', 'admin', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_user` VALUES (2, 'test', '$2a$10$PQzaYqNavzdqqcILGhNdmOJtqbtmiXLhwc8pWw8CwM79BDafGiu76', '测试', '131111111@qq.com', '13111111111', 0, '', 0, '2025-06-15 14:24:11', '2025-06-15 14:24:11', 'admin', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -145,6 +146,7 @@ CREATE TABLE `sys_user_role` (
 -- Records of sys_user_role
 -- ----------------------------
 BEGIN;
+INSERT INTO `sys_user_role` VALUES (1, 1);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
