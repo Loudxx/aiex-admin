@@ -1,5 +1,7 @@
 package com.aix.admin.system.entity;
 
+import com.aix.framework.db.config.listener.FlexInsertListener;
+import com.aix.framework.db.config.listener.FlexUpdateListener;
 import com.aix.framework.security.bo.LoginUser;
 import com.mybatisflex.annotation.Column;
 import com.mybatisflex.annotation.Id;
@@ -12,7 +14,7 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Table("sys_user")
+@Table(value = "sys_user", onInsert = FlexInsertListener.class, onUpdate = FlexUpdateListener.class)
 public class UserDO extends LoginUser {
 
     @Id(keyType = KeyType.Auto)

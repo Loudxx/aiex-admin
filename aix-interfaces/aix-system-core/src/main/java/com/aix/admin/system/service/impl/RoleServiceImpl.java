@@ -31,6 +31,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void save(RoleDTO roleDTO) {
         RoleDomain roleDomain = BeanUtil.toBean(roleDTO, RoleDomain.class);
+        roleDomain.setStatus(0);
         roleDomainService.save(roleDomain);
     }
 

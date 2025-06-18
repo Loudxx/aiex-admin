@@ -8,4 +8,8 @@ public class RoleQueryDO extends PageDTO<RoleQueryDO> {
 
     private String name;
 
+    private String code;
+
+    private String status;
+
 }

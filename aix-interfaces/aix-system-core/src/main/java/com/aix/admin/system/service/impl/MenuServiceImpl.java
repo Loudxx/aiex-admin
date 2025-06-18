@@ -34,6 +34,7 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public void save(MenuDTO menuDTO) {
         MenuDomain menuDomain = BeanUtil.toBean(menuDTO, MenuDomain.class);
+        menuDomain.setStatus(0);
         menuDomainService.save(menuDomain);
     }
 

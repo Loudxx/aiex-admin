@@ -48,11 +48,6 @@ public class UserServiceImpl implements UserService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String passHash = encoder.encode(password);
         userDomain.setPassword(passHash);
-        userDomain.setCreateTime(new Date());
-        userDomain.setModifyTime(new Date());
-        UserDomain userInfo = authDomainService.getUserInfo();
-        userDomain.setCreateBy(userInfo.getUsername());
-        userDomain.setModifyBy(userInfo.getUsername());
     }
 
     @Override

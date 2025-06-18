@@ -3,7 +3,6 @@ package com.aix.admin.system.dto;
 import com.aix.framework.core.base.dto.BaseDTO;
 import com.mybatisflex.annotation.Id;
 import com.mybatisflex.annotation.KeyType;
-import com.mybatisflex.annotation.Table;
 import lombok.Data;
 
 @Data
