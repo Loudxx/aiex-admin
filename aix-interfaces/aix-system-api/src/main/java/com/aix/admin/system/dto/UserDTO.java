@@ -55,11 +55,6 @@ public class UserDTO{
     private List<RoleDTO> roles;
 
     /**
-     * 权限列表
-     */
-    private List<MenuDTO> menus;
-
-    /**
      * 是否是超级管理员角色
      * @return boolean
      */

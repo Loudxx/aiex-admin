@@ -3,7 +3,6 @@ package com.aix.admin.system.controller;
 import com.aix.admin.system.dto.MenuDTO;
 import com.aix.admin.system.dto.query.MenuQueryDTO;
 import com.aix.admin.system.service.MenuService;
-import com.aix.framework.db.config.base.PageDTO;
 import com.aix.framework.web.base.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
