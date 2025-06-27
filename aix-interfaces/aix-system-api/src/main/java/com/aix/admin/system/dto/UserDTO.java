@@ -1,14 +1,6 @@
 package com.aix.admin.system.dto;
 
-import com.aix.framework.security.bo.LoginUser;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.mybatisflex.annotation.Id;
-import com.mybatisflex.annotation.KeyType;
-import com.mybatisflex.annotation.Table;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.util.List;
 
 @Data
 public class UserDTO{
@@ -48,19 +40,5 @@ public class UserDTO{
      * 状态
      */
     private Integer status;
-
-    /**
-     * 角色列表
-     */
-    private List<RoleDTO> roles;
-
-    /**
-     * 是否是超级管理员角色
-     * @return boolean
-     */
-    @JsonIgnore
-    public boolean isAdmin() {
-        return roles.stream().anyMatch(e->e.getCode().equals("admin"));
-    }
 
 }

@@ -5,6 +5,7 @@ import com.aix.admin.system.domian.domain.UserDomain;
 import com.aix.admin.system.domian.domain.query.UserQueryDomain;
 import com.aix.admin.system.domian.service.AuthDomainService;
 import com.aix.admin.system.domian.service.UserDomainService;
+import com.aix.admin.system.dto.UserAuthDTO;
 import com.aix.admin.system.dto.UserDTO;
 import com.aix.admin.system.dto.query.UserQueryDTO;
 import com.aix.admin.system.service.UserService;

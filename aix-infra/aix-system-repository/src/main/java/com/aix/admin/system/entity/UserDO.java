@@ -1,24 +1,26 @@
 package com.aix.admin.system.entity;
 
+import com.aix.framework.db.config.base.BaseDO;
 import com.aix.framework.db.config.listener.FlexInsertListener;
 import com.aix.framework.db.config.listener.FlexUpdateListener;
-import com.aix.framework.security.bo.LoginUser;
-import com.mybatisflex.annotation.Column;
-import com.mybatisflex.annotation.Id;
-import com.mybatisflex.annotation.KeyType;
 import com.mybatisflex.annotation.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.List;
-
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Table(value = "sys_user", onInsert = FlexInsertListener.class, onUpdate = FlexUpdateListener.class)
-public class UserDO extends LoginUser {
+public class UserDO extends BaseDO {
 
-    @Id(keyType = KeyType.Auto)
-    private Long id;
+    /**
+     * 用户名
+     */
+    private String username;
+
+    /**
+     * 密码
+     */
+    private String password;
 
     /**
      * 昵称
@@ -51,15 +53,38 @@ public class UserDO extends LoginUser {
     private Integer status;
 
     /**
-     * 角色列表
+     * 用户唯一标识
      */
-    @Column(ignore = true)
-    private List<RoleDO> roles;
+    private String token;
 
     /**
-     * 权限列表
+     * 登录时间
      */
-    @Column(ignore = true)
-    private List<MenuDO> menus;
+    private Long loginTime;
+
+    /**
+     * 过期时间
+     */
+    private Long expireTime;
+
+    /**
+     * 登录IP地址
+     */
+    private String ipaddr;
+
+    /**
+     * 登录地点
+     */
+    private String loginLocation;
+
+    /**
+     * 浏览器类型
+     */
+    private String browser;
+
+    /**
+     * 操作系统
+     */
+    private String os;
 
 }

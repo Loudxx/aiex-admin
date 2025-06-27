@@ -1,6 +1,6 @@
 package com.aix.admin.system.domian.service;
 
-import com.aix.admin.system.domian.domain.UserDomain;
+import com.aix.admin.system.domian.domain.UserAuthDomain;
 
 public interface AuthDomainService {
 
@@ -8,5 +8,5 @@ public interface AuthDomainService {
      * 获取登录用户信息
      * @return
      */
-    UserDomain getUserInfo();
+    UserAuthDomain getUserInfo();
 }

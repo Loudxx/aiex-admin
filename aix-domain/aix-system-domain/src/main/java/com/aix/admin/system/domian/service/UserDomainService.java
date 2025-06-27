@@ -3,6 +3,7 @@ package com.aix.admin.system.domian.service;
 import com.aix.admin.system.domian.domain.UserDomain;
 import com.aix.admin.system.domian.domain.query.UserQueryDomain;
 import com.aix.framework.db.config.base.PageDTO;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 
@@ -33,4 +34,5 @@ public interface UserDomainService {
      * @return
      */
     UserDomain getById(Long id);
+
 }

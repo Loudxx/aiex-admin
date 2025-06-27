@@ -3,6 +3,7 @@ package com.aix.admin.system.controller;
 import cn.hutool.core.util.ObjectUtil;
 import com.aix.admin.system.dto.LoginDTO;
 import com.aix.admin.system.dto.MenuDTO;
+import com.aix.admin.system.dto.UserAuthDTO;
 import com.aix.admin.system.dto.UserDTO;
 import com.aix.admin.system.dto.query.MenuQueryDTO;
 import com.aix.admin.system.dto.query.UserMenuQueryDTO;
@@ -93,11 +94,11 @@ public class AuthController {
      */
     @GetMapping("/getUserMenu")
     public Result<List<MenuDTO>> getUserMenu(){
-        UserDTO userDTO = authService.getUserInfo();
+        UserAuthDTO userAuthDTO = authService.getUserInfo();
         List<MenuDTO> menuDTOList;
-        if(!userDTO.isAdmin()){
+        if(!userAuthDTO.isAdmin()){
             UserMenuQueryDTO menuQueryDTO = new UserMenuQueryDTO();
-            menuQueryDTO.setUserId(userDTO.getId());
+            menuQueryDTO.setUserId(userAuthDTO.getId());
             menuDTOList = menuService.listUserTreeByQuery(menuQueryDTO);
         }else{
             MenuQueryDTO menuQueryDTO = new MenuQueryDTO();

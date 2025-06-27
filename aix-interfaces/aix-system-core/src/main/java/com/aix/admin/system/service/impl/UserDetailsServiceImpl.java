@@ -1,9 +1,11 @@
-package com.aix.admin.system.domian.service.impl;
+package com.aix.admin.system.service.impl;
 
+import com.aix.admin.system.domian.domain.UserDomain;
+import com.aix.admin.system.domian.service.UserAuthDomainService;
+import com.aix.admin.system.domian.service.UserDomainService;
 import com.aix.admin.system.entity.MenuDO;
 import com.aix.admin.system.entity.RoleDO;
 import com.aix.admin.system.entity.UserDO;
-import com.aix.admin.system.entity.query.MenuQueryDO;
 import com.aix.admin.system.entity.query.UserMenuQueryDO;
 import com.aix.admin.system.mapper.MenuMapper;
 import com.aix.admin.system.mapper.RoleMapper;
@@ -21,30 +23,14 @@ import java.util.List;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UserMapper userMapper;
-
-    @Autowired
-    private RoleMapper roleMapper;
-
-    @Autowired
-    private MenuMapper menuMapper;
+    private UserAuthDomainService userAuthDomainService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("username", username);
-        UserDO user = userMapper.selectOneByQuery(queryWrapper);
+        UserDomain user = userAuthDomainService.getByUserName(username);
         if (user == null) {
             throw new UsernameNotFoundException("用户不存在");
         }
-        //查询用户对应角色
-        List<RoleDO> roles = roleMapper.selectListByUserId(user.getId());
-        //查询用户对应菜单
-        UserMenuQueryDO userMenuQueryDO = new UserMenuQueryDO();
-        userMenuQueryDO.setUserId(user.getId());
-        List<MenuDO> menus = menuMapper.listUserByQuery(userMenuQueryDO);
-        user.setRoles(roles);
-        user.setMenus(menus);
         return user;
     }
 

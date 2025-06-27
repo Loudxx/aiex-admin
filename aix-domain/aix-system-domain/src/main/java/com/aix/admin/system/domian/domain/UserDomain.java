@@ -40,14 +40,6 @@ public class UserDomain extends LoginUser {
      */
     private Integer status;
 
-    /**
-     * 角色列表
-     */
-    private List<RoleDomain> roles;
 
-    /**
-     * 权限列表
-     */
-    private List<MenuDomain> menus;
 
 }
