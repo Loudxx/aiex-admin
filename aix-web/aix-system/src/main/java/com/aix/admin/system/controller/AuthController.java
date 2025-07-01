@@ -9,14 +9,15 @@ import com.aix.admin.system.dto.query.MenuQueryDTO;
 import com.aix.admin.system.dto.query.UserMenuQueryDTO;
 import com.aix.admin.system.service.AuthService;
 import com.aix.admin.system.service.MenuService;
+import com.aix.framework.security.service.TokenService;
 import com.aix.framework.web.base.Result;
 import com.aix.framework.web.enums.WebErrorCodeEnum;
 import com.aix.framework.web.exception.BizException;
 import com.aix.framework.web.redis.RedisCache;
 import com.wf.captcha.SpecCaptcha;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -40,6 +41,9 @@ public class AuthController {
 
     @Autowired
     private MenuService menuService;
+
+    @Autowired
+    private TokenService tokenService;
 
     /**
      * 测试
@@ -87,7 +91,6 @@ public class AuthController {
         return Result.ok(map);
     }
 
-
     /**
      * 获取当前登录用户信息
      * @return User
@@ -131,7 +134,8 @@ public class AuthController {
      * @return Void
      */
     @GetMapping("/refresh")
-    public Result<Void> refresh(){
+    public Result<Void> refresh(HttpServletRequest request){
+        tokenService.verifyToken(request);
         return Result.ok();
     }
 
@@ -140,7 +144,8 @@ public class AuthController {
      * @return Void
      */
     @GetMapping("/logout")
-    public Result<Void> logout(){
+    public Result<Void> logout(HttpServletRequest request){
+        tokenService.invalidToken(request);
         return Result.ok();
     }
 
