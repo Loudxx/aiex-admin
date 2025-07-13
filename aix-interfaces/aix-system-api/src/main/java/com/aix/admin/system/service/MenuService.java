@@ -39,4 +39,11 @@ public interface MenuService {
      * @return
      */
     List<MenuDTO> listUserTreeByQuery(UserMenuQueryDTO userMenuQueryDTO);
+
+    /**
+     * 查询菜单列表
+     * @param menuQueryDTO
+     * @return
+     */
+    List<MenuDTO> listByQuery(MenuQueryDTO menuQueryDTO);
 }

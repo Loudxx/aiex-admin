@@ -22,6 +22,12 @@ public class MenuController {
         return Result.ok(menuDTOList);
     }
 
+    @PostMapping("/listByQuery")
+    public Result<List<MenuDTO>> listByQuery(@RequestBody MenuQueryDTO menuQueryDTO){
+        List<MenuDTO> menuDTOList = menuService.listByQuery(menuQueryDTO);
+        return Result.ok(menuDTOList);
+    }
+
     @PostMapping("/save")
     public Result<Void> save(@RequestBody MenuDTO menuDTO){
         menuService.save(menuDTO);
