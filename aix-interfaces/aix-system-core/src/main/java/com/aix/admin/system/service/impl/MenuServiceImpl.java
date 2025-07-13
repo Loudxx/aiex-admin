@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 public class MenuServiceImpl implements MenuService {
 
-    private static final Long rooId = 0L;
+    private static final Long rooId = null;
 
     @Autowired
     private MenuDomainService menuDomainService;

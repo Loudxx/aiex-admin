@@ -15,10 +15,6 @@ public class MenuDomain extends BaseDomain {
      */
     private String name;
     /**
-     * 菜单编码
-     */
-    private String code;
-    /**
      * 菜单路径
      */
     private String path;

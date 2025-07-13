@@ -17,10 +17,6 @@ public class MenuDO extends BaseDO {
      */
     private String name;
     /**
-     * 菜单编码
-     */
-    private String code;
-    /**
      * 菜单路径
      */
     private String path;
