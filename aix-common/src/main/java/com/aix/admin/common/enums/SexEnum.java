@@ -1,0 +1,24 @@
+package com.aix.admin.common.enums;
+
+import com.aix.framework.core.enums.EnumInterface;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+public enum SexEnum implements EnumInterface {
+
+    ENABLE("启用", "0"),
+    DISABLE("禁用", "1"),
+    ;
+
+    /**
+     * 名称
+     */
+    private final String label;
+    /**
+     * 值
+     */
+    private final String value;
+
+}
