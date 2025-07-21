@@ -1,15 +1,15 @@
-package com.aix.admin.common.enums;
+package com.aix.admin.common.enums.system;
 
 import com.aix.framework.core.enums.EnumInterface;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
-public enum SexEnum implements EnumInterface {
+@Getter
+public enum UserStatusEnum implements EnumInterface {
 
-    ENABLE("启用", "0"),
-    DISABLE("禁用", "1"),
+    MALE("男", "0"),
+    FEMALE("女", "1"),
     ;
 
     /**

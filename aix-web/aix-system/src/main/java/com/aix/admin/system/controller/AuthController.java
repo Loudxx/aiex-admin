@@ -27,7 +27,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/auth")
 public class AuthController {
 
     @Value("${aix.security.captcha.enabled}")
