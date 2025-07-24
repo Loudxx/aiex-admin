@@ -20,6 +20,12 @@ public class CommonController {
     @Autowired
     private CommonService commonService;
 
+    @GetMapping("/getAllDict")
+    public Result<Map<String, List<EnumDTO>>> getAllDict(){
+        Map<String, List<EnumDTO>> dictMap = commonService.getAllDict();
+        return Result.ok(dictMap);
+    }
+
     @GetMapping("/getDict")
     public Result<Map<String, List<EnumDTO>>> getDict(@RequestParam("dictNameList") List<String> dictNameList){
         Map<String, List<EnumDTO>> dictMap = commonService.getDict(dictNameList);

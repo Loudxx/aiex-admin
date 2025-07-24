@@ -20,4 +20,9 @@ public class CommonServiceImpl implements CommonService {
     public Map<String, List<EnumDTO>> getDict(List<String> dictNameList) {
         return commonDomainService.getDict(dictNameList);
     }
+
+    @Override
+    public Map<String, List<EnumDTO>> getAllDict() {
+        return commonDomainService.getAllDict();
+    }
 }

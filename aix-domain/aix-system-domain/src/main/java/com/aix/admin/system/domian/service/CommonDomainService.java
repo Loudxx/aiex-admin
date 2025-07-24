@@ -12,4 +12,10 @@ public interface CommonDomainService {
      * @return
      */
     Map<String, List<EnumDTO>> getDict(List<String> dictNameList);
+
+    /**
+     * 获取所有字典数据
+     * @return
+     */
+    Map<String, List<EnumDTO>> getAllDict();
 }

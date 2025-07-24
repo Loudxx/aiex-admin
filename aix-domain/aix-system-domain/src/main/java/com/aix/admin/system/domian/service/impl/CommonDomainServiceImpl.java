@@ -32,4 +32,9 @@ public class CommonDomainServiceImpl implements CommonDomainService {
         }
         return dictMap;
     }
+
+    @Override
+    public Map<String, List<EnumDTO>> getAllDict() {
+        return DICT_MAP;
+    }
 }
