@@ -143,7 +143,7 @@ public class AuthController {
      * 退出登录
      * @return Void
      */
-    @GetMapping("/logout")
+    @PostMapping("/logout")
     public Result<Void> logout(HttpServletRequest request){
         tokenService.invalidToken(request);
         return Result.ok();
