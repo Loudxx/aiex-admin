@@ -17,7 +17,10 @@ public class CommonDomainServiceImpl implements CommonDomainService {
     static {
         String packageName = "com.aix.admin.common.enums";
         try {
-            DICT_MAP.putAll(EnumUtils.getEnums(packageName));
+            Map<String, List<EnumDTO>> enums = EnumUtils.getEnums(packageName);
+            enums.forEach((key, value)->{
+                DICT_MAP.put(key.replaceAll("Enum", ""), value);
+            });
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

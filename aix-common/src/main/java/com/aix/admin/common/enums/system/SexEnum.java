@@ -8,8 +8,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum SexEnum implements EnumInterface {
 
-    ENABLE("启用", "0"),
-    DISABLE("禁用", "1"),
+    ENABLE("启用", 0),
+    DISABLE("禁用", 1),
     ;
 
     /**
@@ -19,6 +19,6 @@ public enum SexEnum implements EnumInterface {
     /**
      * 值
      */
-    private final String value;
+    private final Integer value;
 
 }
