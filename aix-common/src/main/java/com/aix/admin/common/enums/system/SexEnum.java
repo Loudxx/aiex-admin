@@ -8,8 +8,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum SexEnum implements EnumInterface {
 
-    ENABLE("启用", 0),
-    DISABLE("禁用", 1),
+    MALE("男", 0),
+    FEMALE("女", 1),
+
     ;
 
     /**
