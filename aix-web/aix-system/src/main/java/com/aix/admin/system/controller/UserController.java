@@ -2,6 +2,8 @@ package com.aix.admin.system.controller;
 
 import com.aix.admin.system.dto.UserAuthDTO;
 import com.aix.admin.system.dto.UserDTO;
+import com.aix.admin.system.dto.UserPassWordDTO;
+import com.aix.admin.system.dto.UserStatusDTO;
 import com.aix.admin.system.dto.query.UserQueryDTO;
 import com.aix.admin.system.service.UserAuthService;
 import com.aix.admin.system.service.UserService;
@@ -43,6 +45,24 @@ public class UserController {
     @DeleteMapping("/{ids}")
     public Result<Void> delete(@PathVariable("ids") List<Long> ids){
         userService.deleteByIds(ids);
+        return Result.ok();
+    }
+
+    @PutMapping("/updateStatus")
+    public Result<Void> updateStatus(@RequestBody UserStatusDTO userStatusDTO){
+        userService.updateStatus(userStatusDTO);
+        return Result.ok();
+    }
+
+    @PutMapping("/updatePassWord")
+    public Result<Void> updatePassWord(@RequestBody UserPassWordDTO userPassWordDTO){
+        userService.updatePassWord(userPassWordDTO);
+        return Result.ok();
+    }
+
+    @PutMapping("/resetPassWord")
+    public Result<Void> resetPassWord(@RequestParam("id") Long id){
+        userService.resetPassWord(id);
         return Result.ok();
     }
 

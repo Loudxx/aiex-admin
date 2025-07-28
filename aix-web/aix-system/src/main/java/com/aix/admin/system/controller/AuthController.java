@@ -64,7 +64,7 @@ public class AuthController {
         String verCode = specCaptcha.text().toLowerCase();
         String uuid = UUID.randomUUID().toString();
         // 存入redis并设置过期时间为30分钟
-        redisCache.setCacheObject(uuid, verCode, 30, TimeUnit.MINUTES);
+        redisCache.setCacheObject(uuid, verCode, 1, TimeUnit.MINUTES);
         // 将key和base64返回给前端
         Map<String, Object> map = new HashMap<>(2);
         map.put("uuid", uuid);

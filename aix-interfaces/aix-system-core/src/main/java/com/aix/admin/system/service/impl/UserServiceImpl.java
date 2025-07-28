@@ -2,11 +2,14 @@ package com.aix.admin.system.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.aix.admin.system.domian.domain.UserDomain;
+import com.aix.admin.system.domian.domain.UserPassWordDomain;
+import com.aix.admin.system.domian.domain.UserStatusDomain;
 import com.aix.admin.system.domian.domain.query.UserQueryDomain;
 import com.aix.admin.system.domian.service.AuthDomainService;
 import com.aix.admin.system.domian.service.UserDomainService;
-import com.aix.admin.system.dto.UserAuthDTO;
 import com.aix.admin.system.dto.UserDTO;
+import com.aix.admin.system.dto.UserPassWordDTO;
+import com.aix.admin.system.dto.UserStatusDTO;
 import com.aix.admin.system.dto.query.UserQueryDTO;
 import com.aix.admin.system.service.UserService;
 import com.aix.framework.db.config.base.PageDTO;
@@ -15,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -60,5 +62,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteByIds(List<Long> ids) {
         userDomainService.deleteByIds(ids);
+    }
+
+    @Override
+    public void updateStatus(UserStatusDTO userStatusDTO) {
+        UserStatusDomain userStatusDomain = BeanUtil.toBean(userStatusDTO, UserStatusDomain.class);
+        userDomainService.updateStatus(userStatusDomain);
+    }
+
+    @Override
+    public void updatePassWord(UserPassWordDTO userPassWordDTO) {
+        UserPassWordDomain userPassWordDomain = BeanUtil.toBean(userPassWordDTO, UserPassWordDomain.class);
+        userDomainService.updatePassWord(userPassWordDomain);
+    }
+
+    @Override
+    public void resetPassWord(Long id) {
+        userDomainService.resetPassWord(id);
     }
 }

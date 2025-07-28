@@ -1,6 +1,8 @@
 package com.aix.admin.system.service;
 
 import com.aix.admin.system.dto.UserDTO;
+import com.aix.admin.system.dto.UserPassWordDTO;
+import com.aix.admin.system.dto.UserStatusDTO;
 import com.aix.admin.system.dto.query.UserQueryDTO;
 import com.aix.framework.db.config.base.PageDTO;
 
@@ -32,4 +34,22 @@ public interface UserService {
      * @param ids
      */
     void deleteByIds(List<Long> ids);
+
+    /**
+     * 修改状态
+     * @param userStatusDTO
+     */
+    void updateStatus(UserStatusDTO userStatusDTO);
+
+    /**
+     * 修改密码
+     * @param userPassWordDTO
+     */
+    void updatePassWord(UserPassWordDTO userPassWordDTO);
+
+    /**
+     * 重置密码
+     * @param id
+     */
+    void resetPassWord(Long id);
 }

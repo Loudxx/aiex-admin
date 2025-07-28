@@ -1,9 +1,10 @@
 package com.aix.admin.system.domian.service;
 
 import com.aix.admin.system.domian.domain.UserDomain;
+import com.aix.admin.system.domian.domain.UserPassWordDomain;
+import com.aix.admin.system.domian.domain.UserStatusDomain;
 import com.aix.admin.system.domian.domain.query.UserQueryDomain;
 import com.aix.framework.db.config.base.PageDTO;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 
@@ -35,4 +36,21 @@ public interface UserDomainService {
      */
     UserDomain getById(Long id);
 
+    /**
+     * 修改用户状态
+     * @param userStatusDomain
+     */
+    void updateStatus(UserStatusDomain userStatusDomain);
+
+    /**
+     * 修改用户密码
+     * @param userPassWordDomain
+     */
+    void updatePassWord(UserPassWordDomain userPassWordDomain);
+
+    /**
+     * 重置密码
+     * @param id
+     */
+    void resetPassWord(Long id);
 }
