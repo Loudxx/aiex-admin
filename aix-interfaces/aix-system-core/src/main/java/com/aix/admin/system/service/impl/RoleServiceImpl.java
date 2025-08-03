@@ -45,4 +45,11 @@ public class RoleServiceImpl implements RoleService {
     public void deleteByIds(List<Long> ids) {
         roleDomainService.deleteByIds(ids);
     }
+
+    @Override
+    public List<RoleDTO> listByQuery(RoleQueryDTO roleQueryDTO) {
+        RoleQueryDomain queryDomain = BeanUtil.toBean(roleQueryDTO, RoleQueryDomain.class);
+        List<RoleDomain> roleDomainList =  roleDomainService.listByQuery(queryDomain);
+        return BeanUtil.copyToList(roleDomainList, RoleDTO.class);
+    }
 }

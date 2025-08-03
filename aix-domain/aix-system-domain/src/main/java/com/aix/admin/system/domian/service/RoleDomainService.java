@@ -32,4 +32,11 @@ public interface RoleDomainService {
      * @param ids
      */
     void deleteByIds(List<Long> ids);
+
+    /**
+     * 条件查询
+     * @param queryDomain
+     * @return
+     */
+    List<RoleDomain> listByQuery(RoleQueryDomain queryDomain);
 }

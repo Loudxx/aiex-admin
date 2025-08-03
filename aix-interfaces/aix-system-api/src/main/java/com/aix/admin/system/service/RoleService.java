@@ -33,4 +33,11 @@ public interface RoleService {
      * @return
      */
     void deleteByIds(List<Long> ids);
+
+    /**
+     * 条件查询
+     * @param roleQueryDTO
+     * @return
+     */
+    List<RoleDTO> listByQuery(RoleQueryDTO roleQueryDTO);
 }

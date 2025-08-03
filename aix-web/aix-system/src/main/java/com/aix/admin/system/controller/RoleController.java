@@ -23,6 +23,12 @@ public class RoleController {
         return Result.ok(pageDTO);
     }
 
+    @PostMapping("/listByQuery")
+    public Result<List<RoleDTO>> listByQuery(@RequestBody RoleQueryDTO roleQueryDTO){
+        List<RoleDTO> roleDTOList = roleService.listByQuery(roleQueryDTO);
+        return Result.ok(roleDTOList);
+    }
+
     @PostMapping("/save")
     public Result<Void> save(@RequestBody RoleDTO roleDTO){
         roleService.save(roleDTO);

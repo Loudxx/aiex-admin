@@ -77,27 +77,27 @@ public class UserAuthDomainServiceImpl implements UserAuthDomainService {
         //保存用户
         userMapper.insertOrUpdateSelective(userDO);
         //保存用户角色
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("user_id", userDO.getId());
-        List<UserRoleDO> userRoleDOS = userRoleMapper.selectListByQuery(queryWrapper);
-        List<Long> roleIds = userRoleDOS.stream().map(UserRoleDO::getRoleId).collect(Collectors.toList());
-        List<Long> newRoleIds = userAuthDomain.getRoles().stream()
-                .map(RoleDomain::getId)
-                .collect(Collectors.toList());
-        Collection<Long> deleteRoleIds = CollectionUtil.subtract(roleIds, newRoleIds);
-        Collection<Long> addRoleIds = CollectionUtil.subtract(newRoleIds, roleIds);
-        List<UserRoleDO> addUserRoleList = addRoleIds.stream().map(e -> {
-            UserRoleDO userRoleDO = new UserRoleDO();
-            userRoleDO.setUserId(userDO.getId());
-            userRoleDO.setRoleId(e);
-            return userRoleDO;
-        }).collect(Collectors.toList());
-        if(CollectionUtil.isNotEmpty(addUserRoleList)){
-            userRoleMapper.insertBatch(addUserRoleList);
-        }
-        if(CollectionUtil.isNotEmpty(deleteRoleIds)){
-            userRoleMapper.deleteByUserIdAndRoleList(userDO.getId(), deleteRoleIds);
-        }
+//        QueryWrapper queryWrapper = new QueryWrapper();
+//        queryWrapper.eq("user_id", userDO.getId());
+//        List<UserRoleDO> userRoleDOS = userRoleMapper.selectListByQuery(queryWrapper);
+//        List<Long> roleIds = userRoleDOS.stream().map(UserRoleDO::getRoleId).collect(Collectors.toList());
+//        List<Long> newRoleIds = userAuthDomain.getRoles().stream()
+//                .map(RoleDomain::getId)
+//                .collect(Collectors.toList());
+//        Collection<Long> deleteRoleIds = CollectionUtil.subtract(roleIds, newRoleIds);
+//        Collection<Long> addRoleIds = CollectionUtil.subtract(newRoleIds, roleIds);
+//        List<UserRoleDO> addUserRoleList = addRoleIds.stream().map(e -> {
+//            UserRoleDO userRoleDO = new UserRoleDO();
+//            userRoleDO.setUserId(userDO.getId());
+//            userRoleDO.setRoleId(e);
+//            return userRoleDO;
+//        }).collect(Collectors.toList());
+//        if(CollectionUtil.isNotEmpty(addUserRoleList)){
+//            userRoleMapper.insertBatch(addUserRoleList);
+//        }
+//        if(CollectionUtil.isNotEmpty(deleteRoleIds)){
+//            userRoleMapper.deleteByUserIdAndRoleList(userDO.getId(), deleteRoleIds);
+//        }
 
     }
 }

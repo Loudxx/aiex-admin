@@ -30,4 +30,14 @@ public interface RoleMapper extends FlexBaseMapper<RoleDO> {
                 .and(ROLE_DO.STATUS.eq(roleQueryDO.getStatus(), ObjectUtil::isNotEmpty));
         return page(roleQueryDO.getPageNumber(), roleQueryDO.getPageSize(), queryWrapper);
     }
+
+    default List<RoleDO> listByQuery(RoleQueryDO roleQueryDO){
+        QueryWrapper queryWrapper = QueryWrapper.create()
+                .select()
+                .where(ROLE_DO.NAME.likeLeft(roleQueryDO.getName(), ObjectUtil::isNotEmpty))
+                .and(ROLE_DO.CODE.likeLeft(roleQueryDO.getCode(), ObjectUtil::isNotEmpty))
+                .and(ROLE_DO.STATUS.eq(roleQueryDO.getStatus(), ObjectUtil::isNotEmpty));
+        return selectListByQuery(queryWrapper);
+    }
+
 }
