@@ -1,5 +1,6 @@
 package com.aix.admin.system.service;
 
+import com.aix.admin.system.dto.GenRoleDTO;
 import com.aix.admin.system.dto.UserDTO;
 import com.aix.admin.system.dto.UserPassWordDTO;
 import com.aix.admin.system.dto.UserStatusDTO;
@@ -52,4 +53,5 @@ public interface UserService {
      * @param id
      */
     void resetPassWord(Long id);
+
 }

@@ -1,12 +1,14 @@
 package com.aix.admin.system.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.aix.admin.system.domian.domain.GenRoleDomain;
 import com.aix.admin.system.domian.domain.UserDomain;
 import com.aix.admin.system.domian.domain.UserPassWordDomain;
 import com.aix.admin.system.domian.domain.UserStatusDomain;
 import com.aix.admin.system.domian.domain.query.UserQueryDomain;
 import com.aix.admin.system.domian.service.AuthDomainService;
 import com.aix.admin.system.domian.service.UserDomainService;
+import com.aix.admin.system.dto.GenRoleDTO;
 import com.aix.admin.system.dto.UserDTO;
 import com.aix.admin.system.dto.UserPassWordDTO;
 import com.aix.admin.system.dto.UserStatusDTO;
@@ -80,4 +82,5 @@ public class UserServiceImpl implements UserService {
     public void resetPassWord(Long id) {
         userDomainService.resetPassWord(id);
     }
+
 }

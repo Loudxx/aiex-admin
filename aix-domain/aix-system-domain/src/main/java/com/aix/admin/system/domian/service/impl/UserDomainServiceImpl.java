@@ -2,18 +2,21 @@ package com.aix.admin.system.domian.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjectUtil;
+import com.aix.admin.system.domian.domain.GenRoleDomain;
 import com.aix.admin.system.domian.domain.UserDomain;
 import com.aix.admin.system.domian.domain.UserPassWordDomain;
 import com.aix.admin.system.domian.domain.UserStatusDomain;
 import com.aix.admin.system.domian.domain.query.UserQueryDomain;
 import com.aix.admin.system.domian.service.UserDomainService;
 import com.aix.admin.system.entity.UserDO;
+import com.aix.admin.system.entity.UserRoleDO;
 import com.aix.admin.system.entity.query.UserQueryDO;
 import com.aix.admin.system.mapper.UserMapper;
 import com.aix.framework.db.config.base.PageDTO;
 import com.aix.framework.db.config.utils.PageUtils;
 import com.aix.framework.web.enums.WebErrorCodeEnum;
 import com.aix.framework.web.exception.BizException;
+import com.mybatisflex.core.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -81,4 +84,5 @@ public class UserDomainServiceImpl implements UserDomainService {
         userUpdateDO.setPassword(passHash);
         userMapper.update(userUpdateDO, true);
     }
+
 }

@@ -1,9 +1,6 @@
 package com.aix.admin.system.controller;
 
-import com.aix.admin.system.dto.UserAuthDTO;
-import com.aix.admin.system.dto.UserDTO;
-import com.aix.admin.system.dto.UserPassWordDTO;
-import com.aix.admin.system.dto.UserStatusDTO;
+import com.aix.admin.system.dto.*;
 import com.aix.admin.system.dto.query.UserQueryDTO;
 import com.aix.admin.system.service.UserAuthService;
 import com.aix.admin.system.service.UserService;
@@ -63,6 +60,12 @@ public class UserController {
     @PutMapping("/resetPassWord")
     public Result<Void> resetPassWord(@RequestParam("id") Long id){
         userService.resetPassWord(id);
+        return Result.ok();
+    }
+
+    @PutMapping("/genRole")
+    public Result<Void> genRole(@RequestBody GenRoleDTO genRoleDTO){
+        userAuthService.genRole(genRoleDTO);
         return Result.ok();
     }
 

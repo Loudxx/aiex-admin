@@ -1,5 +1,6 @@
 package com.aix.admin.system.domian.service;
 
+import com.aix.admin.system.domian.domain.GenRoleDomain;
 import com.aix.admin.system.domian.domain.UserAuthDomain;
 
 public interface UserAuthDomainService {
@@ -23,4 +24,10 @@ public interface UserAuthDomainService {
      * @param userAuthDomain
      */
     void save(UserAuthDomain userAuthDomain);
+
+    /**
+     * 分配角色
+     * @param genRoleDomain
+     */
+    void genRole(GenRoleDomain genRoleDomain);
 }

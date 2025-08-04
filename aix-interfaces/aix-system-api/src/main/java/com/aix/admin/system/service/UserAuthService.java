@@ -1,5 +1,6 @@
 package com.aix.admin.system.service;
 
+import com.aix.admin.system.dto.GenRoleDTO;
 import com.aix.admin.system.dto.UserAuthDTO;
 import com.aix.admin.system.dto.UserDTO;
 
@@ -17,4 +18,10 @@ public interface UserAuthService {
      * @param userAuthDTO
      */
     void save(UserAuthDTO userAuthDTO);
+
+    /**
+     * 分配角色
+     * @param genRoleDTO
+     */
+    void genRole(GenRoleDTO genRoleDTO);
 }

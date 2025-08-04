@@ -2,6 +2,7 @@ package com.aix.admin.system.domian.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollectionUtil;
+import com.aix.admin.system.domian.domain.GenRoleDomain;
 import com.aix.admin.system.domian.domain.MenuDomain;
 import com.aix.admin.system.domian.domain.RoleDomain;
 import com.aix.admin.system.domian.domain.UserAuthDomain;
@@ -76,28 +77,30 @@ public class UserAuthDomainServiceImpl implements UserAuthDomainService {
         UserDO userDO = BeanUtil.toBean(userAuthDomain, UserDO.class);
         //保存用户
         userMapper.insertOrUpdateSelective(userDO);
-        //保存用户角色
-//        QueryWrapper queryWrapper = new QueryWrapper();
-//        queryWrapper.eq("user_id", userDO.getId());
-//        List<UserRoleDO> userRoleDOS = userRoleMapper.selectListByQuery(queryWrapper);
-//        List<Long> roleIds = userRoleDOS.stream().map(UserRoleDO::getRoleId).collect(Collectors.toList());
-//        List<Long> newRoleIds = userAuthDomain.getRoles().stream()
-//                .map(RoleDomain::getId)
-//                .collect(Collectors.toList());
-//        Collection<Long> deleteRoleIds = CollectionUtil.subtract(roleIds, newRoleIds);
-//        Collection<Long> addRoleIds = CollectionUtil.subtract(newRoleIds, roleIds);
-//        List<UserRoleDO> addUserRoleList = addRoleIds.stream().map(e -> {
-//            UserRoleDO userRoleDO = new UserRoleDO();
-//            userRoleDO.setUserId(userDO.getId());
-//            userRoleDO.setRoleId(e);
-//            return userRoleDO;
-//        }).collect(Collectors.toList());
-//        if(CollectionUtil.isNotEmpty(addUserRoleList)){
-//            userRoleMapper.insertBatch(addUserRoleList);
-//        }
-//        if(CollectionUtil.isNotEmpty(deleteRoleIds)){
-//            userRoleMapper.deleteByUserIdAndRoleList(userDO.getId(), deleteRoleIds);
-//        }
 
+    }
+
+    @Override
+    public void genRole(GenRoleDomain genRoleDomain) {
+        //保存用户角色
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("user_id", genRoleDomain.getId());
+        List<UserRoleDO> userRoleDOS = userRoleMapper.selectListByQuery(queryWrapper);
+        List<Long> roleIds = userRoleDOS.stream().map(UserRoleDO::getRoleId).collect(Collectors.toList());
+        List<Long> newRoleIds = genRoleDomain.getRoleIds();
+        Collection<Long> deleteRoleIds = CollectionUtil.subtract(roleIds, newRoleIds);
+        Collection<Long> addRoleIds = CollectionUtil.subtract(newRoleIds, roleIds);
+        List<UserRoleDO> addUserRoleList = addRoleIds.stream().map(e -> {
+            UserRoleDO userRoleDO = new UserRoleDO();
+            userRoleDO.setUserId(genRoleDomain.getId());
+            userRoleDO.setRoleId(e);
+            return userRoleDO;
+        }).collect(Collectors.toList());
+        if(CollectionUtil.isNotEmpty(addUserRoleList)){
+            userRoleMapper.insertBatch(addUserRoleList);
+        }
+        if(CollectionUtil.isNotEmpty(deleteRoleIds)){
+            userRoleMapper.deleteByUserIdAndRoleList(genRoleDomain.getId(), deleteRoleIds);
+        }
     }
 }

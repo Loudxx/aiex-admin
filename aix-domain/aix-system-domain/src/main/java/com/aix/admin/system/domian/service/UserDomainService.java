@@ -1,5 +1,6 @@
 package com.aix.admin.system.domian.service;
 
+import com.aix.admin.system.domian.domain.GenRoleDomain;
 import com.aix.admin.system.domian.domain.UserDomain;
 import com.aix.admin.system.domian.domain.UserPassWordDomain;
 import com.aix.admin.system.domian.domain.UserStatusDomain;
@@ -53,4 +54,5 @@ public interface UserDomainService {
      * @param id
      */
     void resetPassWord(Long id);
+
 }
