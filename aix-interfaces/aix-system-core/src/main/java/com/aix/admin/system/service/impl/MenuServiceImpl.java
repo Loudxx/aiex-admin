@@ -1,6 +1,7 @@
 package com.aix.admin.system.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.ObjectUtil;
 import com.aix.admin.system.domian.domain.MenuDomain;
 import com.aix.admin.system.domian.domain.query.MenuQueryDomain;
 import com.aix.admin.system.domian.domain.query.UserMenuQueryDomain;
@@ -32,7 +33,9 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public void save(MenuDTO menuDTO) {
         MenuDomain menuDomain = BeanUtil.toBean(menuDTO, MenuDomain.class);
-        menuDomain.setStatus(0);
+        if(ObjectUtil.isEmpty(menuDomain.getStatus())){
+            menuDomain.setStatus(0);
+        }
         menuDomainService.save(menuDomain);
     }
 

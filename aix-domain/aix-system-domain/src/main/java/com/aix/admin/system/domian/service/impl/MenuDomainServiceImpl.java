@@ -35,7 +35,7 @@ public class MenuDomainServiceImpl implements MenuDomainService {
     @Override
     public void save(MenuDomain menuDomain) {
         MenuDO menuDO = BeanUtil.toBean(menuDomain, MenuDO.class);
-        menuMapper.insertOrUpdate(menuDO);
+        menuMapper.insertOrUpdateSelective(menuDO);
     }
 
     @Override

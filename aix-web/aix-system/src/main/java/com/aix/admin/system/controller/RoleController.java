@@ -1,6 +1,6 @@
 package com.aix.admin.system.controller;
 
-import com.aix.admin.system.dto.RoleDTO;
+import com.aix.admin.system.dto.*;
 import com.aix.admin.system.dto.query.RoleQueryDTO;
 import com.aix.admin.system.service.RoleService;
 import com.aix.framework.db.config.base.PageDTO;
@@ -45,6 +45,24 @@ public class RoleController {
     public Result<RoleDTO> delete(@PathVariable("ids") List<Long> ids){
         roleService.deleteByIds(ids);
         return Result.ok();
+    }
+
+    @PutMapping("/updateStatus")
+    public Result<Void> updateStatus(@RequestBody RoleStatusDTO roleStatusDTO){
+        roleService.updateStatus(roleStatusDTO);
+        return Result.ok();
+    }
+
+    @PutMapping("/genAuth")
+    public Result<Void> genAuth(@RequestBody GenAuthDTO genAuthDTO){
+        roleService.genAuth(genAuthDTO);
+        return Result.ok();
+    }
+
+    @GetMapping("/genAuthDetail/{id}")
+    public Result<List<Long>> genAuthDetail(@PathVariable("id") Long id){
+        List<Long> menuIds = roleService.genAuthDetail(id);
+        return Result.ok(menuIds);
     }
 
 }

@@ -1,6 +1,8 @@
 package com.aix.admin.system.domian.service;
 
+import com.aix.admin.system.domian.domain.GenAuthDomain;
 import com.aix.admin.system.domian.domain.RoleDomain;
+import com.aix.admin.system.domian.domain.RoleStatusDomain;
 import com.aix.admin.system.domian.domain.query.RoleQueryDomain;
 import com.aix.framework.db.config.base.PageDTO;
 
@@ -39,4 +41,23 @@ public interface RoleDomainService {
      * @return
      */
     List<RoleDomain> listByQuery(RoleQueryDomain queryDomain);
+
+    /**
+     * 修改状态
+     * @param roleStatusDomain
+     */
+    void updateStatus(RoleStatusDomain roleStatusDomain);
+
+    /**
+     * 授权
+     * @param genAuthDomain
+     */
+    void genAuth(GenAuthDomain genAuthDomain);
+
+    /**
+     * 获取权限信息
+     * @param id
+     * @return
+     */
+    List<Long> genAuthDetail(Long id);
 }

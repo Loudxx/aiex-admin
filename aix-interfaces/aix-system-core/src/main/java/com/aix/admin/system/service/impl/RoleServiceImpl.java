@@ -1,10 +1,16 @@
 package com.aix.admin.system.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.ObjectUtil;
+import com.aix.admin.system.domian.domain.GenAuthDomain;
 import com.aix.admin.system.domian.domain.RoleDomain;
+import com.aix.admin.system.domian.domain.RoleStatusDomain;
+import com.aix.admin.system.domian.domain.UserStatusDomain;
 import com.aix.admin.system.domian.domain.query.RoleQueryDomain;
 import com.aix.admin.system.domian.service.RoleDomainService;
+import com.aix.admin.system.dto.GenAuthDTO;
 import com.aix.admin.system.dto.RoleDTO;
+import com.aix.admin.system.dto.RoleStatusDTO;
 import com.aix.admin.system.dto.query.RoleQueryDTO;
 import com.aix.admin.system.service.RoleService;
 import com.aix.framework.db.config.base.PageDTO;
@@ -31,7 +37,9 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void save(RoleDTO roleDTO) {
         RoleDomain roleDomain = BeanUtil.toBean(roleDTO, RoleDomain.class);
-        roleDomain.setStatus(0);
+        if(ObjectUtil.isEmpty(roleDomain.getStatus())){
+            roleDomain.setStatus(0);
+        }
         roleDomainService.save(roleDomain);
     }
 
@@ -51,5 +59,22 @@ public class RoleServiceImpl implements RoleService {
         RoleQueryDomain queryDomain = BeanUtil.toBean(roleQueryDTO, RoleQueryDomain.class);
         List<RoleDomain> roleDomainList =  roleDomainService.listByQuery(queryDomain);
         return BeanUtil.copyToList(roleDomainList, RoleDTO.class);
+    }
+
+    @Override
+    public void updateStatus(RoleStatusDTO roleStatusDTO) {
+        RoleStatusDomain roleStatusDomain = BeanUtil.toBean(roleStatusDTO, RoleStatusDomain.class);
+        roleDomainService.updateStatus(roleStatusDomain);
+    }
+
+    @Override
+    public void genAuth(GenAuthDTO genAuthDTO) {
+        GenAuthDomain genAuthDomain = BeanUtil.toBean(genAuthDTO, GenAuthDomain.class);
+        roleDomainService.genAuth(genAuthDomain);
+    }
+
+    @Override
+    public List<Long> genAuthDetail(Long id) {
+        return roleDomainService.genAuthDetail(id);
     }
 }

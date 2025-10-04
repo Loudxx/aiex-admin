@@ -1,6 +1,8 @@
 package com.aix.admin.system.service;
 
+import com.aix.admin.system.dto.GenAuthDTO;
 import com.aix.admin.system.dto.RoleDTO;
+import com.aix.admin.system.dto.RoleStatusDTO;
 import com.aix.admin.system.dto.query.RoleQueryDTO;
 import com.aix.framework.db.config.base.PageDTO;
 
@@ -40,4 +42,23 @@ public interface RoleService {
      * @return
      */
     List<RoleDTO> listByQuery(RoleQueryDTO roleQueryDTO);
+
+    /**
+     * 修改状态
+     * @param roleStatusDTO
+     */
+    void updateStatus(RoleStatusDTO roleStatusDTO);
+
+    /**
+     * 分配权限
+     * @param genAuthDTO
+     */
+    void genAuth(GenAuthDTO genAuthDTO);
+
+    /**
+     * 获取详情
+     * @param id
+     * @return
+     */
+    List<Long> genAuthDetail(Long id);
 }
