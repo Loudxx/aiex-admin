@@ -23,17 +23,9 @@ public class MenuDomain extends BaseDomain {
      */
     private String type;
     /**
-     * 排序
-     */
-    private Integer sort;
-    /**
      * 父级id
      */
     private Long parentId;
-    /**
-     * 图标
-     */
-    private String icon;
     /**
      * 状态
      */
@@ -46,6 +38,7 @@ public class MenuDomain extends BaseDomain {
      * 重定向地址
      */
     private String redirect;
+
     private Map meta;
 
 }

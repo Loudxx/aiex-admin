@@ -1,6 +1,7 @@
 package com.aix.admin.system.domian.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.ObjectUtil;
 import com.aix.admin.system.domian.domain.MenuDomain;
 import com.aix.admin.system.domian.domain.query.MenuQueryDomain;
 import com.aix.admin.system.domian.domain.query.UserMenuQueryDomain;
@@ -60,7 +61,9 @@ public class MenuDomainServiceImpl implements MenuDomainService {
         return menuDOList.stream().map(e->{
             MenuDomain menuDomain = new MenuDomain();
             BeanUtil.copyProperties(e, menuDomain, "meta");
-            menuDomain.setMeta(JacksonUtils.parseObject(e.getMeta(), Map.class));
+            if(ObjectUtil.isNotEmpty(e.getMeta())){
+                menuDomain.setMeta(JacksonUtils.parseObject(e.getMeta(), Map.class));
+            }
             return menuDomain;
         }).collect(Collectors.toList());
     }

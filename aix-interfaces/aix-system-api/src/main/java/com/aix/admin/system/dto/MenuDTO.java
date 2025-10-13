@@ -23,17 +23,9 @@ public class MenuDTO extends BaseTreeDTO {
      */
     private String type;
     /**
-     * 排序
-     */
-    private Integer sort;
-    /**
      * 父级id
      */
     private Long parentId;
-    /**
-     * 图标
-     */
-    private String icon;
     /**
      * 状态
      */
