@@ -40,6 +40,15 @@ public class MenuDTO extends BaseTreeDTO {
     private String redirect;
 
     private Map meta;
+    /**
+     * 激活路径
+     */
+    private String activePath;
+    /**
+     * 跳转链接
+     */
+    private String linkSrc;
+
 
 
 

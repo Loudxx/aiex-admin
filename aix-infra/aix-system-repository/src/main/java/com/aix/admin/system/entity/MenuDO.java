@@ -42,6 +42,14 @@ public class MenuDO extends BaseDO {
     private String redirect;
 
     private String meta;
+    /**
+     * 激活路径
+     */
+    private String activePath;
+    /**
+     * 跳转链接
+     */
+    private String linkSrc;
 
 
 }
