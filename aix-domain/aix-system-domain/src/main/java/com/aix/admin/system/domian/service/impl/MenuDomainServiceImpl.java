@@ -2,6 +2,7 @@ package com.aix.admin.system.domian.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.json.JSONUtil;
 import com.aix.admin.system.domian.domain.MenuDomain;
 import com.aix.admin.system.domian.domain.query.MenuQueryDomain;
 import com.aix.admin.system.domian.domain.query.UserMenuQueryDomain;
@@ -36,6 +37,9 @@ public class MenuDomainServiceImpl implements MenuDomainService {
     @Override
     public void save(MenuDomain menuDomain) {
         MenuDO menuDO = BeanUtil.toBean(menuDomain, MenuDO.class);
+        if(ObjectUtil.isNotEmpty(menuDO.getMeta())){
+            menuDO.setMeta(JSONUtil.toJsonStr(menuDomain.getMeta()));
+        }
         menuMapper.insertOrUpdateSelective(menuDO);
     }
 
