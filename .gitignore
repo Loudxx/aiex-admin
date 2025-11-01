@@ -32,3 +32,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### project ###
+aix-start/src/main/resources/application-prod.yml
