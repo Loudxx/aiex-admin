@@ -26,10 +26,33 @@
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>build-native</id>
+                        <goals>
+                            <goal>compile-no-fork</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--必须指定入口类-->
+                    <mainClass>com.aix.admin.AixStartApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>process-aot</id>
+                        <goals>
+                            <!--process-aot阶段阶段由ProcessAotMojo#executeAot处理-->
+                            <goal>process-aot</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
