@@ -8,9 +8,9 @@ aix后台管理平台
 后端分为框架实现aix-framework, boot版本aix-admin, cloud版本aix-cloud  
 借鉴ddd领域驱动，增加领域层，适用于复杂项目开发  
 
-#演示地址：http://www.aix0.top/#/auth/login 
-#前端项目地址-基于vben5:https://gitee.com/Loudxx/aix-vben 
-#框架地址：https://gitee.com/Loudxx/aix-framework 
+演示地址：http://www.aix0.top/#/auth/login  
+前端项目地址-基于vben5:https://gitee.com/Loudxx/aix-vben  
+框架地址：https://gitee.com/Loudxx/aix-framework  
 
 整体架构
 
