@@ -11,7 +11,7 @@
  Target Server Version : 80028 (8.0.28)
  File Encoding         : 65001
 
- Date: 20/10/2025 01:30:51
+ Date: 05/11/2025 00:38:41
 */
 
 SET NAMES utf8mb4;
@@ -36,20 +36,23 @@ CREATE TABLE `sys_menu` (
   `modify_by` bigint DEFAULT NULL,
   `redirect` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `meta` text COLLATE utf8mb4_general_ci,
+  `active_path` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '激活路径',
+  `link_src` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '跳转链接',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`) VALUES (1, 'Dashboard', 'catalog', NULL, '/', 'BasicLayout', 0, 0, '2024-11-18 14:28:46', '2024-11-18 14:28:50', 1, 1, '/analytics', '{\"order\": -1, \"title\": \"page.dashboard.title\"}');
-INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`) VALUES (2, 'Analytics', 'menu', 1, '/analytics', 'views/dashboard/analytics/index', 0, 0, '2024-11-18 14:28:46', '2024-11-18 14:28:50', 1, 1, NULL, '{ \"affixTab\": true, \"title\": \"page.dashboard.analytics\"}');
-INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`) VALUES (3, 'Workspace', 'menu', 1, '/workspace', 'views/dashboard/workspace/index', 0, 0, '2024-11-18 14:28:46', '2024-11-18 14:28:50', 1, 1, '', '{\"title\": \"page.dashboard.workspace\"}');
-INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`) VALUES (4, 'System', 'catalog', NULL, '/system', '', 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, NULL, '{\"title\": \"page.system.title\"}');
-INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`) VALUES (5, 'User', 'menu', 4, '/user', 'views/system/user/index', 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, NULL, '{\"title\": \"page.system.user\"}');
-INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`) VALUES (6, 'Role', 'menu', 4, '/role', 'views/system/role/index', 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, NULL, '{\"title\": \"page.system.role\"}');
-INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`) VALUES (7, 'Menu', 'menu', 4, '/menu', 'views/system/menu/index', 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, NULL, '{\"title\": \"page.system.menu\"}');
+INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`, `active_path`, `link_src`) VALUES (1, 'Dashboard', 'catalog', NULL, '/dashboard', 'BasicLayout', 0, 0, '2024-11-18 14:28:46', '2024-11-18 14:28:50', 1, 1, '/analytics', '{\"order\": -1, \"title\": \"page.dashboard.title\"}', NULL, NULL);
+INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`, `active_path`, `link_src`) VALUES (2, 'Analytics', 'menu', 1, '/analytics', 'views/dashboard/analytics/index', 0, 0, '2024-11-18 14:28:46', '2024-11-18 14:28:50', 1, 1, NULL, '{ \"affixTab\": true, \"title\": \"page.dashboard.analytics\"}', NULL, NULL);
+INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`, `active_path`, `link_src`) VALUES (3, 'Workspace', 'menu', 1, '/workspace', 'views/dashboard/workspace/index', 0, 0, '2024-11-18 14:28:46', '2024-11-18 14:28:50', 1, 1, '', '{\"title\": \"page.dashboard.workspace\"}', NULL, NULL);
+INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`, `active_path`, `link_src`) VALUES (4, 'System', 'catalog', NULL, '/system', '', 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, NULL, '{\"title\": \"page.system.title\"}', NULL, NULL);
+INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`, `active_path`, `link_src`) VALUES (5, 'User', 'menu', 4, '/user', 'views/system/user/index', 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, NULL, '{\"title\": \"page.system.user\"}', NULL, NULL);
+INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`, `active_path`, `link_src`) VALUES (6, 'Role', 'menu', 4, '/role', 'views/system/role/index', 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, NULL, '{\"title\": \"page.system.role\"}', NULL, NULL);
+INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`, `active_path`, `link_src`) VALUES (7, 'Menu', 'menu', 4, '/menu', 'views/system/menu/index', 0, 0, '2025-04-17 23:01:51', '2025-04-17 23:01:54', 1, 1, NULL, '{\"title\": \"page.system.menu\"}', NULL, NULL);
+INSERT INTO `sys_menu` (`id`, `name`, `type`, `parent_id`, `path`, `component`, `status`, `deleted`, `create_time`, `modify_time`, `create_by`, `modify_by`, `redirect`, `meta`, `active_path`, `link_src`) VALUES (8, 'test', 'menu', 4, '/test', '/demos/element/index', 0, 0, '2025-10-22 21:45:56', '2025-10-26 23:47:07', 1, 1, NULL, '{\"title\":\"page.system.test\"}', '/test', '');
 COMMIT;
 
 -- ----------------------------
