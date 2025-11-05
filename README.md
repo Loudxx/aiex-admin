@@ -2,7 +2,7 @@
 
 
 #### 介绍
-aix后台管理平台
+aix-admin（AI eXecution Admin）人工智能驱动的后台管理平台
 
 采用前后端分离的模式，前端开源两个框架：aix-react(基于 React、Ant Design)、aix-vue (基于 Vue、Element-UI)。 
 后端分为框架实现aix-framework, boot版本aix-admin, cloud版本aix-cloud  
