@@ -168,5 +168,32 @@
         </plugins>
     </build>
 
+    <!-- 使用 huawei / aliyun 的 Maven 源，提升下载速度 -->
+    <repositories>
+        <repository>
+            <id>aliyunmaven</id>
+            <name>aliyun</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+        <repository>
+            <id>huaweicloud</id>
+            <name>huawei</name>
+            <url>https://mirrors.huaweicloud.com/repository/maven/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>2349112-snapshot-cDsF1o</id>
+            <name>2349112-snapshot-cDsF1o</name>
+            <url>https://packages.aliyun.com/maven/repository/2349112-release-w7dN12/</url>
+        </repository>
+        <snapshotRepository>
+            <id>2349112-snapshot-cDsF1o</id>
+            <name>2349112-snapshot-cDsF1o</name>
+            <url>https://packages.aliyun.com/maven/repository/2349112-snapshot-cDsF1o/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 
 </project>
