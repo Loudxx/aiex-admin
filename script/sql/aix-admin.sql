@@ -5,7 +5,7 @@
  Source Server Type    : MySQL
  Source Server Version : 80028 (8.0.28)
  Source Host           : localhost:3306
- Source Schema         : aix-admin
+ Source Schema         : aiex-admin
 
  Target Server Type    : MySQL
  Target Server Version : 80028 (8.0.28)

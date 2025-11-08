@@ -1,0 +1,49 @@
+#服务器配置
+server:
+  undertow:
+    # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+    buffer-size: 1024
+    # 是否分配的直接内存
+    direct-buffers: true
+    # 线程配置
+    threads:
+      # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+      io: 16
+      # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+      worker: 400
+
+
+#项目模块集中配置
+spring:
+  profiles:
+    active: dev
+
+
+#aiex自定义配置
+aiex:
+  security:
+    #开启aiex的security
+    enabled: true
+    #验证码
+    captcha:
+      enabled: false
+    #白名单
+    white-list:
+      - /auth/test
+      - /auth/login
+    #token配置
+    token:
+      # 令牌自定义标识
+      header: Authorization
+      # 令牌密钥
+      secret: abcdefghijklmnopqrstuvwxyz
+      # 令牌有效期（默认30分钟）
+      expire-time: 30
+      # token前缀
+      token-prefix: "Bearer "
+      # redis登录用户key
+      login-user-key: "aiex:login_tokens:"
+
+
+
+

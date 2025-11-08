@@ -1,0 +1,75 @@
+package com.aiex.admin.system.controller;
+
+import com.aiex.admin.system.dto.*;
+import com.aiex.admin.system.dto.query.UserQueryDTO;
+import com.aiex.admin.system.service.UserAuthService;
+import com.aiex.admin.system.service.UserService;
+import com.aiex.framework.db.config.base.PageDTO;
+import com.aiex.framework.web.base.Result;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/system/user")
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserAuthService userAuthService;
+
+    @PostMapping("/pageByQuery")
+    public Result<PageDTO<UserDTO>> pageByQuery(@RequestBody UserQueryDTO userQueryDTO){
+        PageDTO<UserDTO> pageDTO = userService.pageByQuery(userQueryDTO);
+        return Result.ok(pageDTO);
+    }
+
+    @PostMapping("/save")
+    public Result<Void> save(@RequestBody UserAuthDTO userAuthDTO){
+        userAuthService.save(userAuthDTO);
+        return Result.ok();
+    }
+
+    @GetMapping("/{id}")
+    public Result<UserAuthDTO> getById(@PathVariable("id") Long id){
+        UserAuthDTO userAuthDTO = userAuthService.getById(id);
+        return Result.ok(userAuthDTO);
+    }
+
+    @DeleteMapping("/{ids}")
+    public Result<Void> delete(@PathVariable("ids") List<Long> ids){
+        userService.deleteByIds(ids);
+        return Result.ok();
+    }
+
+    @PutMapping("/updateStatus")
+    public Result<Void> updateStatus(@RequestBody UserStatusDTO userStatusDTO){
+        userService.updateStatus(userStatusDTO);
+        return Result.ok();
+    }
+
+    @PutMapping("/updatePassWord")
+    public Result<Void> updatePassWord(@RequestBody UserPassWordDTO userPassWordDTO){
+        userService.updatePassWord(userPassWordDTO);
+        return Result.ok();
+    }
+
+    @PutMapping("/resetPassWord")
+    public Result<Void> resetPassWord(@RequestParam("id") Long id){
+        userService.resetPassWord(id);
+        return Result.ok();
+    }
+
+    @PutMapping("/genRole")
+    public Result<Void> genRole(@RequestBody GenRoleDTO genRoleDTO){
+        userAuthService.genRole(genRoleDTO);
+        return Result.ok();
+    }
+
+
+
+
+}

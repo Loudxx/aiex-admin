@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.aiex.admin</groupId>
+        <artifactId>aiex-admin</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <artifactId>aiex-interfaces</artifactId>
+    <version>${revision}</version>
+    <name>aiex-interfaces</name>
+    <description>aiex-interfaces</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>aiex-system-api</module>
+        <module>aiex-system-core</module>
+    </modules>
+
+    <dependencies>
+
+    </dependencies>
+
+</project>

@@ -1,0 +1,52 @@
+package com.aiex.admin.system.domian.domain;
+
+import com.aiex.framework.core.base.domain.BaseDomain;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.util.Map;
+
+@EqualsAndHashCode(callSuper = true)
+@Data
+public class MenuDomain extends BaseDomain {
+
+    /**
+     * 菜单名称
+     */
+    private String name;
+    /**
+     * 菜单路径
+     */
+    private String path;
+    /**
+     * 菜单类型
+     */
+    private String type;
+    /**
+     * 父级id
+     */
+    private Long parentId;
+    /**
+     * 状态
+     */
+    private Integer status;
+    /**
+     * 组件
+     */
+    private String component;
+    /**
+     * 重定向地址
+     */
+    private String redirect;
+
+    private Map meta;
+    /**
+     * 激活路径
+     */
+    private String activePath;
+    /**
+     * 跳转链接
+     */
+    private String linkSrc;
+
+}
